@@ -89,7 +89,7 @@ export default function AboutPage() {
   const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const heroWords = 'Built on trust. Driven by precision.'.split(' ');
+  const heroWords = 'Built for SMBs. Powered by expertise.'.split(' ');
 
   return (
     <>
@@ -98,7 +98,7 @@ export default function AboutPage() {
         <div className="page-hero-bg">
           <motion.img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-            alt="Precision Pay office"
+            alt="Crystal HR & Payroll office"
             style={{ y: heroImgY }}
           />
         </div>
@@ -138,15 +138,15 @@ export default function AboutPage() {
           <div className="text-block-right">
             <ScrollReveal>
               <h2 className="heading-display size-lg">
-                Precision Pay was founded with one clear purpose: to deliver payroll services that businesses can truly rely on.
+                Crystal HR & Payroll exists to remove payroll stress from SMBs. Full stop.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={150}>
               <p className="body-text" style={{ marginTop: '3rem' }}>
-                Based in Derby, we partner with companies across the UK to manage their payroll with accuracy, 
-                transparency, and unwavering attention to detail. From healthcare providers and care homes to 
-                hospitality groups and accountancy practices — we understand that every industry has its own 
-                rhythm, and every employee deserves to be paid correctly and on time.
+                We're a dedicated team of payroll and HR experts who believe that accurate, compliant payroll shouldn't require 
+                constant worry. Using award-winning software like BrightPay, we deliver outsourced payroll, specialized HR services, 
+                and genuine support. From accountants to schools, startups to established firms—we partner with businesses that value 
+                precision, reliability, and peace of mind.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={250}>

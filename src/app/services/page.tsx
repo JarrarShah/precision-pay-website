@@ -126,7 +126,7 @@ export default function ServicesPage() {
   const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const heroWords = 'Payroll services crafted for every industry.'.split(' ');
+  const heroWords = 'Payroll and HR solutions built for businesses that demand reliability.'.split(' ');
 
   return (
     <>
@@ -175,14 +175,14 @@ export default function ServicesPage() {
           <div className="text-block-right">
             <ScrollReveal>
               <h2 className="heading-display size-lg">
-                End-to-end payroll management, so you can focus on what matters most — your business.
+                Complete payroll and HR outsourcing, so you can focus on what matters most—your business.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={150}>
               <p className="body-text" style={{ marginTop: '3rem' }}>
-                We handle the full payroll lifecycle with meticulous care. From calculating PAYE and National Insurance 
-                to pension auto-enrolment, RTI submissions, and year-end reporting — every detail is covered. 
-                Our bespoke systems adapt to your business, not the other way around.
+                We handle the full payroll and HR lifecycle with precision and care. From PAYE and National Insurance 
+                to pension auto-enrolment, leave management, RTI submissions, and employee documentation—we manage it all. 
+                With dedicated support, a zero-error guarantee, and crystal-clear reporting, payroll becomes simple.
               </p>
             </ScrollReveal>
           </div>
@@ -193,15 +193,15 @@ export default function ServicesPage() {
       <section className="section-services-detail">
         <ServiceBlock
           index="01"
-          title="Payroll Processing"
-          description="Accurate, timely payroll processing tailored to your pay cycle. We handle weekly, fortnightly, four-weekly, and monthly payrolls with exceptional precision."
+          title="Outsourced Payroll"
+          description="Accurate, on-time payroll processing every single cycle. We handle weekly, fortnightly, four-weekly, and monthly payrolls with zero tolerance for error."
           features={[
             'PAYE & National Insurance calculations',
             'Statutory payments (SSP, SMP, SPP)',
-            'Pension auto-enrolment management',
-            'Real Time Information (RTI) submissions to HMRC',
-            'Payslip generation & distribution',
-            'BACS payment file preparation',
+            'Workplace pension auto-enrolment',
+            'Real Time Information (RTI) submissions',
+            'Payslip generation and digital distribution',
+            'BACS & payment file preparation',
           ]}
           image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2111&auto=format&fit=crop"
           slug="processing"
@@ -209,15 +209,15 @@ export default function ServicesPage() {
 
         <ServiceBlock
           index="02"
-          title="Tax & HMRC Compliance"
-          description="Stay ahead of legislation with our proactive approach to tax compliance. We manage all HMRC submissions and keep your business fully compliant."
+          title="HR & Leave Management"
+          description="Real-time holiday, sick leave, and parental leave management. Keep your team organized and ensure compliance with working time regulations."
           features={[
-            'P45, P60 & P11D processing',
-            'Year-end returns & FPS submissions',
-            'Employment Allowance claims',
-            'CIS deductions for construction',
-            'HMRC correspondence management',
-            'Statutory deadline monitoring',
+            'Annual leave management and tracking',
+            'Sick leave and statutory absence recording',
+            'Parental and compassionate leave',
+            'Holiday accrual calculations',
+            'Employee self-service portal',
+            'GDPR-compliant record-keeping',
           ]}
           image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
           slug="tax-and-hmrc"
@@ -226,15 +226,15 @@ export default function ServicesPage() {
 
         <ServiceBlock
           index="03"
-          title="Reporting & Analytics"
-          description="Gain clarity on your workforce costs with detailed, transparent reporting. We deliver insights that empower better business decisions."
+          title="Employee Documentation & App"
+          description="Secure storage and easy distribution of employment contracts, handbooks, and policies. Plus a free iOS/Android app for employees."
           features={[
-            'Detailed cost analysis reports',
-            'Department & cost centre breakdowns',
-            'Holiday & absence tracking',
-            'Pension contribution summaries',
-            'Custom reports to your specifications',
-            'Monthly management information packs',
+            'Employment contract management',
+            'Employee handbook distribution',
+            'Digital document signing',
+            'Free employee mobile app access',
+            'Digital payslip library for staff',
+            'Secure document viewing portal',
           ]}
           image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
           slug="reporting"
@@ -242,15 +242,15 @@ export default function ServicesPage() {
 
         <ServiceBlock
           index="04"
-          title="Advisory & Support"
-          description="More than just processing — we provide ongoing expert advice to help you navigate the complexities of payroll and employment legislation."
+          title="Specialized Payroll Services"
+          description="Tailored payroll solutions for accountants, educational institutions, international operations, and Irish payroll requirements."
           features={[
-            'Dedicated payroll manager',
-            'Unlimited phone & email support',
-            'New starter & leaver processing',
-            'Pay structure consultations',
-            'Payroll health checks & audits',
-            'Seamless onboarding from previous provider',
+            'Accountant-specific payroll packages',
+            'Education sector expertise (schools/colleges)',
+            'International payroll services',
+            'Irish payroll and compliance',
+            'Bespoke configuration to your needs',
+            'Industry-specific support and guidance',
           ]}
           image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
           slug="compliance"
@@ -273,26 +273,26 @@ export default function ServicesPage() {
         <div className="process-grid">
           <ProcessStep
             number="01"
-            title="Discovery Call"
-            description="We learn about your business, payroll requirements, and current setup. No obligation."
+            title="Discovery & Assessment"
+            description="We discuss your business, current payroll setup, and pain points. We'll explain our service, pricing, and guarantees."
             delay={0}
           />
           <ProcessStep
             number="02"
-            title="Tailored Proposal"
-            description="Receive a clear, transparent quote with no hidden fees. We outline exactly what's included."
+            title="Simple Onboarding"
+            description="Choose Crystal Cloud secure portal or simple spreadsheet uploads. We handle the data migration from your previous provider."
             delay={0.1}
           />
           <ProcessStep
             number="03"
-            title="Seamless Onboarding"
-            description="We handle the migration from your existing provider. Zero disruption to your employees."
+            title="Dedicated Support"
+            description="You'll get a named Payroll Technician who knows your business. Not a call center—real expertise."
             delay={0.2}
           />
           <ProcessStep
             number="04"
-            title="Ongoing Excellence"
-            description="Your dedicated payroll manager ensures every run is accurate, compliant, and on time."
+            title="Zero-Error Processing"
+            description="Award-winning software powers accurate, on-time payroll. If we make a mistake, that run is free. That's our guarantee."
             delay={0.3}
           />
         </div>

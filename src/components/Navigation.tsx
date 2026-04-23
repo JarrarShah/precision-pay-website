@@ -40,7 +40,7 @@
               <path d="M12 9.5L7 12v3l5 2.5 5-2.5v-3L12 9.5z" fill="currentColor" />
             </svg>
           </a>
-          <span className="nav-title">Precision Pay</span>
+          <span className="nav-title">Crystal HR & Payroll</span>
           <button
             className="nav-burger"
             aria-label="Menu"

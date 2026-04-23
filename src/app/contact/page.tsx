@@ -35,7 +35,7 @@ export default function ContactPage() {
   const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const heroWords = "Let's start a conversation.".split(' ');
+  const heroWords = "Let's talk payroll.".split(' ');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ export default function ContactPage() {
         <div className="page-hero-bg">
           <motion.img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-            alt="Contact Precision Pay"
+            alt="Contact Crystal HR & Payroll"
             style={{ y: heroImgY }}
           />
         </div>
@@ -95,13 +95,14 @@ export default function ContactPage() {
             </ScrollReveal>
             <ScrollReveal delay={100}>
               <h2 className="heading-display size-lg" style={{ margin: '3rem 0' }}>
-                We&apos;d love to hear from you.
+                Ready for stress-free payroll?
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <p className="body-text">
-                Whether you&apos;re looking to switch payroll providers, need a quote, or simply want to learn more 
-                about how we can support your business — reach out. We respond to all enquiries within 24 hours.
+                Whether you're switching providers, exploring options, or ready to simplify your payroll—let's talk. 
+                Our team responds to all enquiries within 24 hours, and there's no obligation.
+
               </p>
             </ScrollReveal>
 
@@ -128,8 +129,8 @@ export default function ContactPage() {
               <ScrollReveal delay={400}>
                 <div className="contact-detail-item">
                   <span className="mono-label contact-detail-label">Email</span>
-                  <a href="mailto:info@precisionpay.co.uk" className="contact-detail-text contact-link">
-                    info@precisionpay.co.uk
+                  <a href="mailto:hello@crystalhr.co.uk" className="contact-detail-text contact-link">
+                    hello@crystalhr.co.uk
                   </a>
                 </div>
               </ScrollReveal>
@@ -157,9 +158,9 @@ export default function ContactPage() {
                   transition={{ duration: 0.6 }}
                 >
                   <div className="form-success-icon">✓</div>
-                  <h3 className="heading-display size-md">Message received.</h3>
+                  <h3 className="heading-display size-md">Thanks for reaching out.</h3>
                   <p className="body-text" style={{ marginTop: '1.5rem' }}>
-                    Thank you for reaching out. A member of our team will be in touch within 24 hours.
+                    We've received your message and will get back to you within 24 hours. Looking forward to chatting!
                   </p>
                 </motion.div>
               ) : (

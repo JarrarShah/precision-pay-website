@@ -51,7 +51,7 @@ function HeroSection() {
     }
   }, []);
 
-  const headingWords = 'Exceptional payroll for those who build with vision.'.split(' ');
+  const headingWords = 'Stress-free payroll and HR, so you can focus on growing your business.'.split(' ');
 
   return (
     <motion.section className="hero" ref={heroRef} style={{ y: heroY }}>
@@ -72,7 +72,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          Precision Pay
+          Crystal HR & Payroll
         </motion.span>
         <motion.a
           href="/contact"
@@ -132,12 +132,12 @@ function AboutSection() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const words = 'We bring operations to life through craft and innovation. Trusted by directors who demand precision, beauty, and care.'.split(' ');
+  const words = 'Award-winning payroll and HR expertise. Trusted by SMBs who demand accuracy, reliability, and genuine support.'.split(' ');
 
   return (
     <section className="section-about" ref={ref}>
       <ScrollReveal>
-        <span className="section-label">About Precision Pay</span>
+        <span className="section-label">About Crystal HR & Payroll</span>
       </ScrollReveal>
       <h2 className="heading-display size-xl" style={{ maxWidth: '100rem', margin: '4rem 0' }}>
         {words.map((word, i) => (
@@ -171,22 +171,22 @@ function AboutSection() {
 function ProductsSection() {
   const services = [
     {
-      title: 'Processing',
+      title: 'Outsourced Payroll',
       slug: 'processing',
       img: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop',
     },
     {
-      title: 'Reporting',
+      title: 'HR Services',
       slug: 'reporting',
       img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
     },
     {
-      title: 'Tax & HMRC',
+      title: 'Employee App',
       slug: 'tax-and-hmrc',
       img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2111&auto=format&fit=crop',
     },
     {
-      title: 'Compliance',
+      title: 'Specialized Services',
       slug: 'compliance',
       img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop',
     },
@@ -202,8 +202,8 @@ function ProductsSection() {
           <ScrollReveal delay={100}>
             <div className="products-desc">
               <p className="body-text">
-                Our <strong>payroll services</strong> are defined by exceptional craftsmanship,
-                refined reporting, and enduring quality. Made for bold business and uncompromising vision.
+                Our <strong>payroll and HR services</strong> deliver accurate, timely processing backed by dedicated support,
+                advanced software, and a zero-error guarantee. Designed for growing businesses that need to trust their payroll.
               </p>
               <a href="/services" className="btn btn-dark">
                 <ArrowIcon />
