@@ -480,7 +480,7 @@ const partners = [
   { name: 'Cima Care', url: 'https://cimacare.co.uk', logo: '/partners/CIMA-care-logo.png' },
   { name: 'Khired', url: 'https://khired.com', logo: '/partners/Khired-white.webp.bv.webp' },
   { name: 'AWR Accountants', url: 'https://awraccountants.co.uk', logo: '/partners/awr-logo.png' },
-  { name: 'Live Long Genetics', url: 'https://livelonggenetics.com', logo: '/partners/live_long_genetics_logo_white.avif' },
+  { name: 'Live Long Genetics', url: 'https://livelonggenetics.com', logo: '/partners/llg-nad-booster.png' },
   { name: 'Pharmacy Solutions', url: 'https://pharmacy-solutions.com', logo: '/partners/Pharmacy-Solutions-High-Res-Logo-2.webp' },
 ];
 
