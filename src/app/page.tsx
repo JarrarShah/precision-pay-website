@@ -72,7 +72,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          Crystal HR & Payroll
+          Precision Pay
         </motion.span>
         <motion.a
           href="/contact"
@@ -137,7 +137,7 @@ function AboutSection() {
   return (
     <section className="section-about" ref={ref}>
       <ScrollReveal>
-        <span className="section-label">About Crystal HR & Payroll</span>
+        <span className="section-label">About Precision Pay</span>
       </ScrollReveal>
       <h2 className="heading-display size-xl" style={{ maxWidth: '100rem', margin: '4rem 0' }}>
         {words.map((word, i) => (

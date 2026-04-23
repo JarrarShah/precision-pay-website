@@ -98,7 +98,7 @@ export default function AboutPage() {
         <div className="page-hero-bg">
           <motion.img
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-            alt="Crystal HR & Payroll office"
+            alt="Precision Pay office"
             style={{ y: heroImgY }}
           />
         </div>
@@ -138,7 +138,7 @@ export default function AboutPage() {
           <div className="text-block-right">
             <ScrollReveal>
               <h2 className="heading-display size-lg">
-                Crystal HR & Payroll exists to remove payroll stress from SMBs. Full stop.
+                Precision Pay exists to remove payroll stress from SMBs. Full stop.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={150}>
