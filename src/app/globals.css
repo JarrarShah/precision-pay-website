@@ -2865,13 +2865,13 @@ body {
 }
 
 .partners-marquee-label {
-    background: var(--color-cream-light);
+    background: #f0ece7;
     text-align: center;
     padding: 6rem var(--section-pad) 3rem;
 }
 
 .partners-marquee-band {
-    background: var(--color-black);
+    background: #f0ece7;
     padding: 3.5rem 0;
     overflow: hidden;
 }
