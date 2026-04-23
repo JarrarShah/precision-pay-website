@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
+import { useRef, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 
 function Particles() {
   const meshRef = useRef<THREE.Points>(null);
@@ -32,7 +32,8 @@ function Particles() {
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
       posAttr.array[i3] += velocities[i3] + Math.sin(t + i * 0.01) * 0.0005;
-      posAttr.array[i3 + 1] += velocities[i3 + 1] + Math.cos(t + i * 0.01) * 0.0005;
+      posAttr.array[i3 + 1] +=
+        velocities[i3 + 1] + Math.cos(t + i * 0.01) * 0.0005;
       posAttr.array[i3 + 2] += velocities[i3 + 2];
 
       // Wrap around
@@ -54,6 +55,7 @@ function Particles() {
           count={count}
           array={positions}
           itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -90,8 +92,10 @@ function GlowOrbs() {
     const t = clock.getElapsedTime();
     group.current.children.forEach((child, i) => {
       const orb = orbs[i];
-      child.position.x = orb.position[0] + Math.sin(t * orb.speed + orb.phase) * 1.5;
-      child.position.y = orb.position[1] + Math.cos(t * orb.speed * 0.7 + orb.phase) * 1;
+      child.position.x =
+        orb.position[0] + Math.sin(t * orb.speed + orb.phase) * 1.5;
+      child.position.y =
+        orb.position[1] + Math.cos(t * orb.speed * 0.7 + orb.phase) * 1;
     });
   });
 
@@ -101,7 +105,7 @@ function GlowOrbs() {
         <mesh key={i} position={orb.position}>
           <sphereGeometry args={[orb.scale, 32, 32]} />
           <meshBasicMaterial
-            color={i % 2 === 0 ? '#1a3a5c' : '#2a1a4c'}
+            color={i % 2 === 0 ? "#1a3a5c" : "#2a1a4c"}
             transparent
             opacity={0.08}
           />
@@ -113,11 +117,14 @@ function GlowOrbs() {
 
 export default function HeroBackground() {
   return (
-    <div className="hero-canvas" style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+    <div
+      className="hero-canvas"
+      style={{ position: "absolute", inset: 0, zIndex: 0 }}
+    >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 60 }}
         gl={{ antialias: true, alpha: true }}
-        style={{ background: 'transparent' }}
+        style={{ background: "transparent" }}
         dpr={[1, 1.5]}
       >
         <Particles />
