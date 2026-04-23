@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
 
 function ArrowIcon() {
   return (
@@ -53,7 +54,7 @@ export default function ContactPage() {
       <section className="page-hero page-hero--short" ref={heroRef}>
         <div className="page-hero-bg">
           <motion.img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=2070&auto=format&fit=crop"
             alt="Contact Precision Pay"
             style={{ y: heroImgY }}
           />
@@ -129,8 +130,8 @@ export default function ContactPage() {
               <ScrollReveal delay={400}>
                 <div className="contact-detail-item">
                   <span className="mono-label contact-detail-label">Email</span>
-                  <a href="mailto:hello@crystalhr.co.uk" className="contact-detail-text contact-link">
-                    hello@crystalhr.co.uk
+                  <a href="mailto:info@precisionpay.co.uk" className="contact-detail-text contact-link">
+                    info@precisionpay.co.uk
                   </a>
                 </div>
               </ScrollReveal>
@@ -279,6 +280,8 @@ export default function ContactPage() {
           />
         </div>
       </section>
+
+      <SiteFooter />
 
       <div className="grain-overlay" aria-hidden="true" />
     </>

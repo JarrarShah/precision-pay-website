@@ -26,61 +26,69 @@
     return (
       <>
         {/* Bottom pill navigation */}
-        <div className="flex mx-auto">
-  <motion.nav
-    className={`bottom-nav ${hidden ? 'hidden' : ''}`}
-    // Add x: '-50%' here so Framer Motion handles the centering
-    initial={{ x: '-50%', y: 100, opacity: 0 }}
-    animate={hidden ? { x: '-50%', y: 100, opacity: 0 } : { x: '-50%', y: 0, opacity: 1 }}
-    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-  >
-          <a href="/" className="nav-logo" aria-label="Home">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l7 3.5v7l-7 3.5L5 15V8l7-3.5z" fill="currentColor" />
-              <path d="M12 9.5L7 12v3l5 2.5 5-2.5v-3L12 9.5z" fill="currentColor" />
-            </svg>
-          </a>
-          <span className="nav-title">Precision Pay</span>
-          <button
-            className="nav-burger"
-            aria-label="Menu"
-            onClick={() => setMenuOpen(!menuOpen)}
+      <motion.nav
+        className={`bottom-nav ${hidden ? "hidden" : ""}`}
+        initial={{ x: "-50%", y: 100, opacity: 0 }}
+        animate={
+          hidden
+            ? { x: "-50%", y: 100, opacity: 0 }
+            : { x: "-50%", y: 0, opacity: 1 }
+        }
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+      >
+        <a href="/" className="nav-logo" aria-label="Home">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <AnimatePresence mode="wait">
-              {menuOpen ? (
-                <motion.svg
-                  key="close"
-                  viewBox="0 0 13 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 90 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <path d="M0.5 12L12 0.5" stroke="currentColor" strokeWidth="1" />
-                  <path d="M0.5 0.5L12 12" stroke="currentColor" strokeWidth="1" />
-                </motion.svg>
-              ) : (
-                <motion.svg
-                  key="burger"
-                  viewBox="0 0 20 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  initial={{ opacity: 0, rotate: 90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -90 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <path d="M0 0.5H20" stroke="currentColor" strokeWidth="1" />
-                  <path d="M0 5.5H20" stroke="currentColor" strokeWidth="1" />
-                  <path d="M0 10.5H20" stroke="currentColor" strokeWidth="1" />
-                </motion.svg>
-              )}
-            </AnimatePresence>
-          </button>
-        </motion.nav>
-        </div>
+            <path
+              d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l7 3.5v7l-7 3.5L5 15V8l7-3.5z"
+              fill="currentColor"
+            />
+            <path d="M12 9.5L7 12v3l5 2.5 5-2.5v-3L12 9.5z" fill="currentColor" />
+          </svg>
+        </a>
+        <span className="nav-title">Precision Pay</span>
+        <button
+          className="nav-burger"
+          aria-label="Menu"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <AnimatePresence mode="wait">
+            {menuOpen ? (
+              <motion.svg
+                key="close"
+                viewBox="0 0 13 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.25 }}
+              >
+                <path d="M0.5 12L12 0.5" stroke="currentColor" strokeWidth="1" />
+                <path d="M0.5 0.5L12 12" stroke="currentColor" strokeWidth="1" />
+              </motion.svg>
+            ) : (
+              <motion.svg
+                key="burger"
+                viewBox="0 0 20 11"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                initial={{ opacity: 0, rotate: 90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: -90 }}
+                transition={{ duration: 0.25 }}
+              >
+                <path d="M0 0.5H20" stroke="currentColor" strokeWidth="1" />
+                <path d="M0 5.5H20" stroke="currentColor" strokeWidth="1" />
+                <path d="M0 10.5H20" stroke="currentColor" strokeWidth="1" />
+              </motion.svg>
+            )}
+          </AnimatePresence>
+        </button>
+      </motion.nav>
 
         {/* Menu overlay with glassmorphism */}
         <AnimatePresence>

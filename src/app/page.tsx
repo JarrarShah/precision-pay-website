@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
 
 const HeroBackground = dynamic(() => import('@/components/HeroBackground'), {
   ssr: false,
@@ -37,7 +38,8 @@ function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   useEffect(() => {
@@ -54,16 +56,16 @@ function HeroSection() {
   const headingWords = 'Stress-free payroll and HR, so you can focus on growing your business.'.split(' ');
 
   return (
-    <motion.section className="hero" ref={heroRef} style={{ y: heroY }}>
+    <section className="hero" ref={heroRef}>
       <HeroBackground />
 
-      <div className="hero-bg">
+      <motion.div className="hero-bg" style={{ y: bgY }}>
         <img
           ref={imgRef}
-          src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop"
-          alt="Modern office interior"
+          src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2232&auto=format&fit=crop"
+          alt="Professional payroll team at work"
         />
-      </div>
+      </motion.div>
 
       <motion.div className="hero-topbar" style={{ opacity: heroOpacity }}>
         <motion.span
@@ -87,7 +89,7 @@ function HeroSection() {
         </motion.a>
       </motion.div>
 
-      <motion.div className="hero-main" style={{ opacity: heroOpacity }}>
+      <motion.div className="hero-main" style={{ opacity: heroOpacity, y: contentY }}>
         <h1 className="heading-display size-xl">
           {headingWords.map((word, i) => (
             <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
@@ -123,7 +125,7 @@ function HeroSection() {
           </p>
         </div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }
 
@@ -307,8 +309,8 @@ function ShowroomSection() {
 
       <div className="showroom-bg">
         <motion.img
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-          alt="Office showroom"
+          src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop"
+          alt="Business consultation meeting"
           style={{ y: bgY, scale: bgScale }}
           loading="lazy"
         />
@@ -473,43 +475,50 @@ function CTASection() {
   );
 }
 
-/* ─── Footer Section ─── */
-function FooterSection() {
-  const ref = useRef<HTMLElement>(null);
+/* ─── Partners Marquee ─── */
+const partners = [
+  { name: 'Cima Care', url: 'https://cimacare.co.uk', logo: '/partners/CIMA-care-logo.png' },
+  { name: 'Khired', url: 'https://khired.com', logo: '/partners/Khired-white.webp.bv.webp' },
+  { name: 'AWR Accountants', url: 'https://awraccountants.co.uk', logo: '/partners/awr-logo.png' },
+  { name: 'Live Long Genetics', url: 'https://livelonggenetics.com', logo: '/partners/llg-nad-booster.png' },
+  { name: 'Pharmacy Solutions', url: 'https://pharmacy-solutions.com', logo: '/partners/Pharmacy-Solutions-High-Res-Logo-2.webp' },
+];
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end end'],
-  });
-
-  const brandOpacity = useTransform(scrollYProgress, [0.3, 0.8], [0, 0.08]);
-  const brandScale = useTransform(scrollYProgress, [0.3, 1], [0.8, 1]);
+function PartnersMarquee() {
+  // Duplicate array for seamless infinite scroll
+  const doubled = [...partners, ...partners];
 
   return (
-    <footer className="footer" ref={ref}>
-      <div className="footer-image">
-        <img
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-          alt="Office"
-          loading="lazy"
-        />
+    <div className="partners-wrapper">
+      <div className="partners-marquee-label">
+        <ScrollReveal>
+          <span className="section-label">Trusted By Industry Leaders</span>
+        </ScrollReveal>
       </div>
-      <motion.div
-        className="footer-brand"
-        style={{ opacity: brandOpacity, scale: brandScale }}
-      >
-        Precision Pay
-      </motion.div>
-      <div className="footer-bottom">
-        <span>© 2026 Precision Pay</span>
-        <div className="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
+      <div className="partners-marquee-band">
+        <div className="partners-marquee-track">
+          {doubled.map((p, i) => (
+            <a
+              key={`${p.name}-${i}`}
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="partner-marquee-item"
+            >
+              {p.logo ? (
+                <img src={p.logo} alt={p.name} />
+              ) : (
+                <span className="partner-marquee-text">{p.name}</span>
+              )}
+            </a>
+          ))}
         </div>
       </div>
-    </footer>
+    </div>
   );
 }
+
+/* ─── Footer replaced by SiteFooter component ─── */
 
 /* ─── Main Page Composition ─── */
 export default function Home() {
@@ -521,11 +530,13 @@ export default function Home() {
       <ShowroomSection />
       <ProjectsSection />
       <ReviewsSection />
+      <PartnersMarquee />
       <CTASection />
-      <FooterSection />
+      <SiteFooter />
 
       {/* Film grain overlay */}
       <div className="grain-overlay" aria-hidden="true" />
     </>
   );
 }
+

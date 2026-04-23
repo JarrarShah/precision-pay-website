@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
 
 function ArrowIcon() {
   return (
@@ -91,7 +92,7 @@ export default function IndustriesPage() {
     {
       title: 'Healthcare & Pharmacy',
       description: 'Precision payroll for healthcare providers, pharmacies, and medical practices. We understand the complexities of NHS pension schemes, unsocial hours, and multi-site operations.',
-      image: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=2079&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop',
       features: [
         'NHS pension scheme management',
         'Unsocial hours & overtime calculations',
@@ -103,7 +104,7 @@ export default function IndustriesPage() {
     {
       title: 'Care Homes & Social Care',
       description: 'Dedicated payroll support for the care sector. We manage complex shift patterns, sleep-in payments, and CQC-compliant payroll practices with ease.',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop',
       features: [
         'Shift pattern & rota-based pay',
         'Sleep-in & waking night payments',
@@ -168,8 +169,8 @@ export default function IndustriesPage() {
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-bg">
           <motion.img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-            alt="Industries we serve"
+            src="https://images.unsplash.com/photo-1580983559367-0dc2f8934365?q=80&w=2070&auto=format&fit=crop"
+            alt="Diverse industries we serve"
             style={{ y: heroImgY }}
           />
         </div>
@@ -283,6 +284,8 @@ export default function IndustriesPage() {
           <div />
         </div>
       </section>
+
+      <SiteFooter />
 
       <div className="grain-overlay" aria-hidden="true" />
     </>

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
 
 function ArrowIcon() {
   return (
@@ -134,8 +135,8 @@ export default function ServicesPage() {
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-bg">
           <motion.img
-            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop"
-            alt="Financial analytics"
+            src="https://images.unsplash.com/photo-1664575599736-c5197c684128?q=80&w=2070&auto=format&fit=crop"
+            alt="Financial data and analytics"
             style={{ y: heroImgY }}
           />
         </div>
@@ -203,7 +204,7 @@ export default function ServicesPage() {
             'Payslip generation and digital distribution',
             'BACS & payment file preparation',
           ]}
-          image="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2111&auto=format&fit=crop"
+          image="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop"
           slug="processing"
         />
 
@@ -219,7 +220,7 @@ export default function ServicesPage() {
             'Employee self-service portal',
             'GDPR-compliant record-keeping',
           ]}
-          image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+          image="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop"
           slug="tax-and-hmrc"
           reverse
         />
@@ -236,7 +237,7 @@ export default function ServicesPage() {
             'Digital payslip library for staff',
             'Secure document viewing portal',
           ]}
-          image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+          image="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
           slug="reporting"
         />
 
@@ -252,7 +253,7 @@ export default function ServicesPage() {
             'Bespoke configuration to your needs',
             'Industry-specific support and guidance',
           ]}
-          image="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
+          image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2072&auto=format&fit=crop"
           slug="compliance"
           reverse
         />
@@ -328,6 +329,8 @@ export default function ServicesPage() {
           <div />
         </div>
       </section>
+
+      <SiteFooter />
 
       <div className="grain-overlay" aria-hidden="true" />
     </>

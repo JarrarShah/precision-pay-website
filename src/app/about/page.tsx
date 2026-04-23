@@ -4,6 +4,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
 
 /* ─── Shared Arrow Icon ─── */
 function ArrowIcon() {
@@ -97,8 +98,8 @@ export default function AboutPage() {
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-bg">
           <motion.img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
-            alt="Precision Pay office"
+            src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2070&auto=format&fit=crop"
+            alt="Professional team meeting"
             style={{ y: heroImgY }}
           />
         </div>
@@ -206,15 +207,15 @@ export default function AboutPage() {
         <div className="image-band-grid">
           <div className="image-band-item">
             <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
-              alt="Team collaboration"
+              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+              alt="Team strategy meeting"
               loading="lazy"
             />
           </div>
           <div className="image-band-item">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
-              alt="Office meeting"
+              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2087&auto=format&fit=crop"
+              alt="Professional office collaboration"
               loading="lazy"
             />
           </div>
@@ -312,6 +313,8 @@ export default function AboutPage() {
           <div />
         </div>
       </section>
+
+      <SiteFooter />
 
       {/* Grain overlay */}
       <div className="grain-overlay" aria-hidden="true" />
