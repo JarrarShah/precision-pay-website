@@ -90,19 +90,6 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/80 pointer-events-none" />
       </motion.div>
 
-      <motion.div
-        className="hero-topbar relative z-10"
-        style={{ opacity: heroOpacity }}
-      >
-        <motion.span
-          className="logo-text"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Precision Pay
-        </motion.span>
-      </motion.div>
 
       <motion.div
         className="hero-main relative z-10 pointer-events-auto flex flex-col items-start gap-8"
