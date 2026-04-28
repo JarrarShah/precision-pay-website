@@ -128,7 +128,7 @@ function HeroSection() {
         <motion.a
           href="/contact"
           className="btn btn-light"
-          style={{ color: "white", padding: "1.5rem 2rem", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.2)" }}
+          style={{ color: "white", top:"62px", padding: "1.5rem 2rem", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.2)" }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
