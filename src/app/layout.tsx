@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Precision Pay | Exceptional Payroll Services",
   description:
     "Specializing in seamless, accurate, and rapid payroll processing. Bespoke payroll systems for ambitious companies — crafted with precision, clarity, and care.",
-  keywords: "payroll, payroll services, UK payroll, tax compliance, HMRC, payroll processing",
+  keywords: "payroll, payroll services, UK payroll, tax compliance, statutory compliance, payroll processing",
   openGraph: {
     title: "Precision Pay | Exceptional Payroll Services",
     description: "Bespoke payroll systems for ambitious companies.",

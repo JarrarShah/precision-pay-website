@@ -71,7 +71,7 @@ function HeroSection() {
 
   return (
     <section className="hero" ref={heroRef}>
-      <HeroBackground />
+      {/* <HeroBackground /> */}
 
       <motion.div className="hero-bg relative" style={{ y: bgY }}>
         <video
@@ -90,33 +90,9 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/20 to-black/80 pointer-events-none" />
       </motion.div>
 
-      <motion.div
-        className="hero-topbar relative z-10"
-        style={{ opacity: heroOpacity }}
-      >
-        <motion.span
-          className="logo-text"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Precision Pay
-        </motion.span>
-        <motion.a
-          href="/contact"
-          className="btn btn-light"
-          style={{ color: "white", padding: "1.5rem 0" }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.2, duration: 0.8 }}
-        >
-          <ArrowIcon />
-          GET A QUOTE
-        </motion.a>
-      </motion.div>
 
       <motion.div
-        className="hero-main relative z-10 pointer-events-none"
+        className="hero-main relative z-10 pointer-events-auto flex flex-col items-start gap-8"
         style={{ opacity: heroOpacity, y: contentY }}
       >
         <h1
@@ -148,6 +124,18 @@ function HeroSection() {
             </span>
           ))}
         </h1>
+        
+        <motion.a
+          href="/contact"
+          className="btn btn-light"
+          style={{ color: "white", padding: "1.5rem 2rem", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.2)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <ArrowIcon />
+          BOOK A CALL
+        </motion.a>
       </motion.div>
 
       <motion.div
@@ -208,7 +196,7 @@ function ProductsSection() {
     },
     {
       title: "Employee App",
-      slug: "tax-and-hmrc",
+      slug: "tax-and-compliance",
       img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2111&auto=format&fit=crop",
     },
     {
@@ -439,7 +427,7 @@ function ShowroomSection() {
 function ProjectsSection() {
   const projects = [
     {
-      name: "Pharmacy Solutions",
+      name: "Health Care",
       slug: "healthcare",
       tags: ["Payroll", "Healthcare"],
     },
@@ -581,7 +569,7 @@ function ReviewsSection() {
               <div className="review-author-info">
                 <span className="review-author-name">James Richardson</span>
                 <span className="mono-label review-author-role">
-                  Director, Pharmacy Solutions
+                  Director, Precision Pay
                 </span>
               </div>
             </div>
@@ -646,11 +634,6 @@ const partners = [
     name: "Live Long Genetics",
     url: "https://livelonggenetics.com",
     logo: "/partners/llg-nad-booster.png",
-  },
-  {
-    name: "Pharmacy Solutions",
-    url: "https://pharmacy-solutions.com",
-    logo: "/partners/Pharmacy-Solutions-High-Res-Logo-2.webp",
   },
 ];
 

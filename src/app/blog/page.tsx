@@ -14,11 +14,11 @@ const posts = [
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop'
   },
   {
-    title: 'HMRC Real Time Information (RTI): Avoiding Common Pitfalls',
-    slug: 'hmrc-rti-pitfalls',
+    title: 'Navigating Cross-Border Payroll Compliance',
+    slug: 'cross-border-compliance',
     date: 'SEP 28, 2026',
     category: 'Compliance',
-    excerpt: 'RTI changed the payroll landscape significantly. Yet, thousands of businesses still face penalties due to easily avoidable FPS and EPS submission errors. Let\'s break them down.',
+    excerpt: 'Managing payroll across multiple regions involves navigating complex labor laws and tax regulations. Learn how integrated software systems simplify international compliance.',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop'
   },
   {

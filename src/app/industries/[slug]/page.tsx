@@ -7,20 +7,20 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 const industriesData: Record<string, any> = {
   'healthcare': {
-    title: 'Healthcare & Pharmacy',
-    heroImage: 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=2079&auto=format&fit=crop',
+    title: 'Healthcare',
+    heroImage: 'https://images.unsplash.com/photo-1576091160550-2173ff9e5eb3?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Precision payroll for vital services.',
-    description: 'We understand the unique complexities of healthcare payroll, from managing intricate NHS pension schemes to calculating unsocial hours and managing locum staff across multiple sites.',
+    description: 'We understand the unique complexities of healthcare payroll, from calculating unsocial hours to managing multi-site staff consolidation.',
     points: [
-      'NHS pension scheme mastery',
-      'Complex shift and overtime calculations',
-      'Locum & agency staff integration',
-      'Multi-site consolidation'
+      'Unsocial hours & overtime calculations',
+      'Multi-site payroll consolidation',
+      'Staff rostering integration',
+      'Statutory sick pay management'
     ]
   },
   'care-homes': {
     title: 'Care Homes & Social Care',
-    heroImage: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1574068560867-27b9c6a1e948?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Compassionate care requires precise payroll.',
     description: 'Dedicated payroll support for the care sector. We manage complex shift patterns, sleep-in payments, and ensure your payroll practices remain fully compliant with CQC standards.',
     points: [
@@ -32,7 +32,7 @@ const industriesData: Record<string, any> = {
   },
   'hospitality': {
     title: 'Hospitality & Restaurants',
-    heroImage: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Agile payroll for a fast-paced sector.',
     description: 'From local pubs to national hotel chains, we expert handle tronc schemes, tip allocations, split shifts, and the rapid onboarding needed for seasonal workforce fluctuations.',
     points: [
@@ -44,38 +44,38 @@ const industriesData: Record<string, any> = {
   },
   'accountancy': {
     title: 'Accountancy Practices',
-    heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop',
     tagline: 'The invisible engine for your firm.',
     description: 'We offer white-label payroll bureau services specifically designed for accountancy firms. Let us be the dedicated payroll arm of your practice while you maintain the client relationship.',
     points: [
       'Complete white-label service',
       'Client portfolio management',
-      'Branded payslips & portals',
+      'Dedicated account manager',
       'Bulk ongoing processing'
     ]
   },
   'construction': {
     title: 'Construction & Trades',
-    heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1541888087-bce4c6cebbd2?q=80&w=2070&auto=format&fit=crop',
     tagline: 'CIS compliance built on solid foundations.',
     description: 'Bespoke CIS-compliant payroll designed explicitly for the construction industry. We manage subcontractor verification, complex CIS deductions, and seamless monthly returns to HMRC.',
     points: [
       'CIS verification systems',
-      'Subcontractor payment tracking',
       'Monthly CIS300 submissions',
-      'Mixed employment models (PAYE/CIS)'
+      'Mixed employment models (PAYE/CIS)',
+      'Automated statement generation'
     ]
   },
   'retail': {
     title: 'Retail & E-Commerce',
-    heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Scalable payroll for peak seasons.',
-    description: 'High-volume, scalable payroll solutions designed for modern retail. From managing zero-hour contracts to complex commission structures across multiple brick-and-mortar locations.',
+    description: 'High-volume, scalable payroll solutions designed for modern retail. From managing seasonal surges to complex commission structures across multiple brick-and-mortar locations.',
     points: [
-      'Part-time & zero-hour contracts',
       'Commission & bonus calculations',
       'Multi-location consolidation',
-      'Peak season scalability'
+      'Peak season scalability',
+      'Real-time reporting & analytics'
     ]
   }
 };

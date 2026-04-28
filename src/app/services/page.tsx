@@ -221,7 +221,7 @@ export default function ServicesPage() {
             'GDPR-compliant record-keeping',
           ]}
           image="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=2070&auto=format&fit=crop"
-          slug="tax-and-hmrc"
+          slug="tax-and-compliance"
           reverse
         />
 

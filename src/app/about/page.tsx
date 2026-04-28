@@ -268,13 +268,7 @@ export default function AboutPage() {
         <ScrollReveal delay={200}>
           <div className="partners-row">
             <div className="partner-logo-item">
-              <span className="partner-name">Pharmacy Solutions</span>
-            </div>
-            <div className="partner-logo-item">
               <span className="partner-name">Live Long Genetics</span>
-            </div>
-            <div className="partner-logo-item">
-              <span className="partner-name">HMRC Recognised</span>
             </div>
             <div className="partner-logo-item">
               <span className="partner-name">Auto Enrolment</span>

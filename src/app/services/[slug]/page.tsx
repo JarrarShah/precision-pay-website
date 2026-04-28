@@ -15,7 +15,7 @@ const servicesData: Record<string, any> = {
       'PAYE & National Insurance',
       'Statutory payments (SSP, SMP)',
       'Pension auto-enrolment',
-      'RTI submissions to HMRC',
+      'Statutory submissions',
       'Payslip distribution',
       'BACS payment file prep'
     ],
@@ -44,23 +44,23 @@ const servicesData: Record<string, any> = {
       { title: 'Board Ready', text: 'Beautiful, exported reports ready for the boardroom.' }
     ]
   },
-  'tax-and-hmrc': {
-    title: 'Tax & HMRC Compliance',
+  'tax-and-compliance': {
+    title: 'Tax & Statutory Compliance',
     heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2111&auto=format&fit=crop',
     tagline: 'Always compliant. Always ahead.',
-    description: 'Navigating HMRC regulations can be a minefield. We take over the compliance burden, from P11D forms and year-end submissions to ensuring you claim every relevant allowance.',
+    description: 'Navigating tax regulations can be a minefield. We take over the compliance burden, from P11D forms and year-end submissions to ensuring you claim every relevant allowance.',
     features: [
       'P45, P60 & P11D',
       'Year-end & FPS submissions',
       'Employment Allowance',
       'CIS deductions',
-      'HMRC correspondence',
+      'Regulatory correspondence',
       'Deadline monitoring'
     ],
     benefits: [
       { title: 'Risk Mitigation', text: 'Avoid hefty fines and penalties from late or incorrect submissions.' },
       { title: 'Peace of Mind', text: 'Never worry about sudden legislation changes again.' },
-      { title: 'Direct Liaison', text: 'We speak to HMRC so you never have to.' }
+      { title: 'Direct Liaison', text: 'We speak to regulatory bodies so you never have to.' }
     ]
   },
   'compliance': {

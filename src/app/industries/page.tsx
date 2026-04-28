@@ -90,21 +90,21 @@ export default function IndustriesPage() {
 
   const industries = [
     {
-      title: 'Healthcare & Pharmacy',
-      description: 'Precision payroll for healthcare providers, pharmacies, and medical practices. We understand the complexities of NHS pension schemes, unsocial hours, and multi-site operations.',
-      image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop',
+      title: 'Healthcare',
+      description: 'Precision payroll for healthcare providers and medical practices. We understand the complexities of unsocial hours and multi-site operations.',
+      image: 'https://images.unsplash.com/photo-1576091160550-2173ff9e5eb3?q=80&w=2070&auto=format&fit=crop',
       features: [
-        'NHS pension scheme management',
         'Unsocial hours & overtime calculations',
-        'Locum & agency staff processing',
         'Multi-site payroll consolidation',
+        'Staff rostering integration',
+        'Statutory sick pay management',
       ],
       slug: 'healthcare',
     },
     {
       title: 'Care Homes & Social Care',
       description: 'Dedicated payroll support for the care sector. We manage complex shift patterns, sleep-in payments, and CQC-compliant payroll practices with ease.',
-      image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1574068560867-27b9c6a1e948?q=80&w=2070&auto=format&fit=crop',
       features: [
         'Shift pattern & rota-based pay',
         'Sleep-in & waking night payments',
@@ -116,7 +116,7 @@ export default function IndustriesPage() {
     {
       title: 'Hospitality & Restaurants',
       description: 'From pubs and restaurants to hotel chains, we handle tronc schemes, tip allocation, split shifts, and seasonal workforce fluctuations.',
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?q=80&w=2070&auto=format&fit=crop',
       features: [
         'Tronc scheme management',
         'Split shift & variable hour calculations',
@@ -128,36 +128,36 @@ export default function IndustriesPage() {
     {
       title: 'Accountancy Practices',
       description: 'White-label payroll bureau services for accountancy firms. Let us be the payroll arm of your practice while you maintain the client relationship.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop',
       features: [
         'White-label bureau services',
         'Client portfolio management',
-        'Branded payslip generation',
         'Bulk employer processing',
+        'Dedicated account manager',
       ],
       slug: 'accountancy',
     },
     {
       title: 'Construction & Trades',
       description: 'CIS-compliant payroll for the construction industry. We manage subcontractor verification, CIS deductions, and monthly returns to HMRC.',
-      image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1541888087-bce4c6cebbd2?q=80&w=2070&auto=format&fit=crop',
       features: [
         'CIS verification & deductions',
-        'Subcontractor payment management',
         'Monthly CIS300 returns',
         'Mixed employment/CIS payroll',
+        'Automated statement generation',
       ],
       slug: 'construction',
     },
     {
       title: 'Retail & E-Commerce',
-      description: 'Scalable payroll solutions for retail businesses of all sizes. We manage part-time workers, seasonal surges, commission structures, and multi-location operations.',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop',
+      description: 'Scalable payroll solutions for retail businesses of all sizes. We manage seasonal surges, commission structures, and multi-location operations.',
+      image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=2070&auto=format&fit=crop',
       features: [
-        'Part-time & zero-hour contracts',
         'Commission & bonus calculations',
         'Multi-location payroll',
         'Seasonal staff management',
+        'Real-time reporting & analytics',
       ],
       slug: 'retail',
     },
