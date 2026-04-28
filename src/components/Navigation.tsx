@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const allLinks = [
   { href: '/about', label: 'About' },
@@ -94,21 +95,27 @@ export default function Navigation() {
           onMouseOut={(e) => e.currentTarget.style.color = textMuted}
         >Services</Link>
 
-        {/* ─── Center logo (always visible) ─── */}
+        {/* ─── Center logo (always visible in header) ─── */}
         <Link href="/" className="nav-logo-link" style={{
           display: 'flex',
           alignItems: 'center',
           gap: '0.7rem',
-          color: textColor,
           transition: 'color 0.4s ease',
           textDecoration: 'none',
           whiteSpace: 'nowrap',
         }}>
-          <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
-            <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.5l7 3.5v7l-7 3.5L5 15V8l7-3.5z" fill="currentColor" />
-            <path d="M12 9.5L7 12v3l5 2.5 5-2.5v-3L12 9.5z" fill="currentColor" />
-          </svg>
-          <span style={{ fontSize: '1.4rem', fontWeight: 600, letterSpacing: '0.02em' }}>Precision Pay</span>
+          <Image 
+            src="/logo/Black.png" 
+            alt="Precision Pay Logo" 
+            width={140} // Default header width
+            height={40} 
+            style={{
+              objectFit: 'contain',
+              // Inverts the black logo to white when at the top of the page (hero section) so it remains visible
+              filter: scrolled ? 'none' : 'invert(1) brightness(2)',
+              transition: 'filter 0.4s ease'
+            }}
+          />
         </Link>
 
         {/* ─── Desktop links (right) ─── */}
@@ -213,16 +220,40 @@ export default function Navigation() {
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '2rem',
+              gap: '2.5rem', 
+              padding: '2rem',
             }}
           >
+            {/* ─── Big Logo in Mobile Menu ─── */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              style={{ marginBottom: '1rem' }} 
+            >
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                <Image 
+                  src="/logo/Black.png" 
+                  alt="Precision Pay Logo" 
+                  width={220} // Make it bigger
+                  height={60} 
+                  style={{
+                    objectFit: 'contain',
+                    // The mobile background is white-ish, so the black logo works without filter
+                  }}
+                />
+              </Link>
+            </motion.div>
+
+            {/* Links mapping */}
             {allLinks.map((link, i) => (
               <motion.div
                 key={link.href}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                transition={{ delay: 0.05 + i * 0.06, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.1 + i * 0.06, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
                   href={link.href}
@@ -269,8 +300,15 @@ export default function Navigation() {
             display: flex !important;
           }
           .top-nav-header {
-            gap: 1.5rem !important;
+            width: calc(100% - 3rem) !important; /* Stretches the pill across the screen */
+            justify-content: space-between !important; /* Pushes logo left, hamburger right */
+            gap: 0 !important; /* Clears gap so space-between works perfectly */
             padding: 1.2rem 2rem !important;
+          }
+          /* Ensure header logo stays sensible when floating */
+          .nav-logo-link img {
+            width: 120px !important;
+            height: auto !important;
           }
         }
 
@@ -278,15 +316,23 @@ export default function Navigation() {
         @media (max-width: 640px) {
           .top-nav-header {
             top: 1rem !important;
+            width: calc(100% - 2rem) !important; /* Slightly wider on phones */
             padding: 1rem 1.6rem !important;
-            gap: 1rem !important;
           }
-          .nav-logo-link span {
-            font-size: 1.3rem !important;
+          /* Floating header logo size on mobile */
+          .nav-logo-link img {
+            width: 100px !important;
+            height: auto !important;
           }
-          .nav-logo-link svg {
-            width: 16px !important;
-            height: 16px !important;
+
+          /* Mobile Menu specific tweaks */
+          .mobile-menu-overlay a {
+            font-size: 2.2rem !important; /* Scale down text slightly on small screens */
+          }
+          /* Ensure mobile menu logo stays bigger but fits */
+          .mobile-menu-overlay img {
+            width: 180px !important; 
+            height: auto !important;
           }
         }
       `}</style>

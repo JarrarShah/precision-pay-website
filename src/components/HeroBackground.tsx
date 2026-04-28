@@ -1,3 +1,4 @@
+// src/components/HeroBackground.tsx
 "use client";
 
 import { useRef, useMemo } from "react";

@@ -71,7 +71,7 @@ function HeroSection() {
 
   return (
     <section className="hero" ref={heroRef}>
-      <HeroBackground />
+      {/* <HeroBackground /> */}
 
       <motion.div className="hero-bg relative" style={{ y: bgY }}>
         <video
