@@ -247,7 +247,7 @@ export default function IndustriesPage() {
             <div className="testimonial-author" style={{ marginTop: '4rem' }}>
               <span style={{ fontSize: '2rem', fontWeight: 300 }}>James Richardson</span>
               <span className="mono-label" style={{ color: 'var(--color-muted)', marginTop: '0.5rem', display: 'block' }}>
-                Director, Pharmacy Solutions
+                Director, Proactive Health Care
               </span>
             </div>
           </ScrollReveal>
