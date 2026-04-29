@@ -239,7 +239,7 @@ export default function IndustriesPage() {
         <div className="testimonial-band-inner">
           <ScrollReveal>
             <blockquote className="heading-display size-lg" style={{ fontStyle: 'italic', maxWidth: '70rem' }}>
-              &ldquo;Precision Pay understood our pharmacy payroll from day one. Their knowledge of healthcare-specific 
+              &ldquo;Precision Pay understood our Care Home payroll from day one. Their knowledge of healthcare-specific 
               requirements saved us time and eliminated errors we didn&apos;t even know we had.&rdquo;
             </blockquote>
           </ScrollReveal>
