@@ -1,3 +1,4 @@
+// src/app/contact/page.tsx
 'use client';
 
 import { useRef, useState } from 'react';
@@ -18,6 +19,7 @@ export default function ContactPage() {
   const heroRef = useRef<HTMLElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const isHeroInView = useInView(heroTextRef, { once: true });
+  
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -26,7 +28,9 @@ export default function ContactPage() {
     phone: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -38,10 +42,32 @@ export default function ContactPage() {
 
   const heroWords = "Let's talk payroll.".split(' ');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    // In production, this would send to an API endpoint
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setStatus('success');
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      setStatus('error');
+      setErrorMessage(error.message || 'Failed to send message. Please try again.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -103,7 +129,6 @@ export default function ContactPage() {
               <p className="body-text">
                 Whether you're switching providers, exploring options, or ready to simplify your payroll—let's talk. 
                 Our team responds to all enquiries within 24 hours, and there's no obligation.
-
               </p>
             </ScrollReveal>
 
@@ -151,14 +176,14 @@ export default function ContactPage() {
           {/* Right: Form */}
           <div className="contact-form-wrap">
             <ScrollReveal>
-              {submitted ? (
+              {status === 'success' ? (
                 <motion.div
                   className="form-success"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <div className="form-success-icon">✓</div>
+                  <div className="form-success-icon" style={{ fontSize: '3rem', color: '#10B981', marginBottom: '1rem' }}>✓</div>
                   <h3 className="heading-display size-md">Thanks for reaching out.</h3>
                   <p className="body-text" style={{ marginTop: '1.5rem' }}>
                     We've received your message and will get back to you within 24 hours. Looking forward to chatting!
@@ -166,6 +191,11 @@ export default function ContactPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
+                  {status === 'error' && (
+                    <div className="form-error" style={{ color: '#EF4444', marginBottom: '1rem', padding: '1rem', border: '1px solid #EF4444', borderRadius: '4px' }}>
+                      {errorMessage}
+                    </div>
+                  )}
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="name" className="mono-label form-label">Full Name *</label>
@@ -174,6 +204,7 @@ export default function ContactPage() {
                         name="name"
                         type="text"
                         required
+                        disabled={status === 'loading'}
                         value={formState.name}
                         onChange={handleChange}
                         className="form-input"
@@ -187,6 +218,7 @@ export default function ContactPage() {
                         name="email"
                         type="email"
                         required
+                        disabled={status === 'loading'}
                         value={formState.email}
                         onChange={handleChange}
                         className="form-input"
@@ -202,6 +234,7 @@ export default function ContactPage() {
                         id="company"
                         name="company"
                         type="text"
+                        disabled={status === 'loading'}
                         value={formState.company}
                         onChange={handleChange}
                         className="form-input"
@@ -214,6 +247,7 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         type="tel"
+                        disabled={status === 'loading'}
                         value={formState.phone}
                         onChange={handleChange}
                         className="form-input"
@@ -227,6 +261,7 @@ export default function ContactPage() {
                     <select
                       id="employees"
                       name="employees"
+                      disabled={status === 'loading'}
                       value={formState.employees}
                       onChange={handleChange}
                       className="form-input form-select"
@@ -246,6 +281,7 @@ export default function ContactPage() {
                       id="message"
                       name="message"
                       required
+                      disabled={status === 'loading'}
                       rows={5}
                       value={formState.message}
                       onChange={handleChange}
@@ -254,9 +290,20 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn-dark form-submit">
-                    <ArrowIcon />
-                    Send Enquiry
+                  <button 
+                    type="submit" 
+                    className="btn btn-dark form-submit"
+                    disabled={status === 'loading'}
+                    style={{ opacity: status === 'loading' ? 0.7 : 1, cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}
+                  >
+                    {status === 'loading' ? (
+                      'Sending...'
+                    ) : (
+                      <>
+                        <ArrowIcon />
+                        Send Enquiry
+                      </>
+                    )}
                   </button>
                 </form>
               )}
