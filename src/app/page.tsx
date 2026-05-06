@@ -2,10 +2,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteFooter from "@/components/SiteFooter";
+import PartnersMarquee from "@/components/PartnersMarquee";
+import BookingModal from "@/components/BookingModal";
+import { useState } from "react";
 
 const HeroBackground = dynamic(() => import("@/components/HeroBackground"), {
   ssr: false,
@@ -41,7 +44,7 @@ function ProjectArrow() {
 }
 
 /* ─── Hero Section ─── */
-function HeroSection() {
+function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -93,8 +96,17 @@ function HeroSection() {
 
 
       <motion.div
-        className="hero-main relative z-10 pointer-events-auto flex flex-col items-start gap-8"
-        style={{ opacity: heroOpacity, y: contentY }}
+        className="hero-main"
+        style={{ 
+          opacity: heroOpacity, 
+          y: contentY,
+          pointerEvents: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '3rem',
+          zIndex: 10
+        }}
       >
         <h1
           className="heading-display size-xl"
@@ -126,21 +138,29 @@ function HeroSection() {
           ))}
         </h1>
         
-        <motion.a
-          href="/contact"
+        <motion.button
+          onClick={onOpenModal}
           className="btn btn-light"
-          style={{ color: "white", top:"62px", padding: "1.5rem 2rem", background: "rgba(255,255,255,0.1)", backdropFilter: "blur(10px)", border: "1px solid rgba(255,255,255,0.2)" }}
+          style={{ 
+            color: "white", 
+            marginTop: "2rem", 
+            padding: "1.5rem 2rem", 
+            background: "rgba(255,255,255,0.1)", 
+            backdropFilter: "blur(10px)", 
+            border: "1px solid rgba(255,255,255,0.2)" 
+          }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.8, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <ArrowIcon />
           BOOK A CALL
-        </motion.a>
+        </motion.button>
       </motion.div>
 
       <motion.div
-        className="hero-sub relative z-10 pointer-events-none"
+        className="hero-sub"
+        style={{ position: 'relative', zIndex: 10, pointerEvents: 'none' }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.6, duration: 1 }}
@@ -516,7 +536,33 @@ function ProjectRow({
 }
 
 /* ─── Reviews / Testimonial Section ─── */
+const reviews = [
+  {
+    quote: "Precision Pay transformed our payroll operations. Their attention to detail and compliance expertise is unmatched.",
+    author: "James Richardson",
+    role: "Director, Precision Pay",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
+  },
+  {
+    quote: "Switching to Precision Pay was the best decision for our HR department. The automation saves us hours every week.",
+    author: "Sarah Jenkins",
+    role: "HR Manager, TechFlow",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
+  },
+  {
+    quote: "Their specialized support for construction CIS was exactly what we needed. Reliable, fast, and always compliant.",
+    author: "Mark Thompson",
+    role: "Owner, Thompson Builds",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+  }
+];
+
 function ReviewsSection() {
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((prev) => (prev + 1) % reviews.length);
+  const prev = () => setIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+
   return (
     <section className="section-reviews">
       <div className="top-border">
@@ -525,7 +571,7 @@ function ReviewsSection() {
             <span className="section-label">Client Testimonials</span>
           </ScrollReveal>
           <div className="arrow-nav">
-            <button aria-label="Previous">
+            <button aria-label="Previous" onClick={prev}>
               <svg viewBox="0 0 14 9" fill="none">
                 <path
                   d="M1 4.5h12M9 1l4 3.5L9 8"
@@ -534,7 +580,7 @@ function ReviewsSection() {
                 />
               </svg>
             </button>
-            <button aria-label="Next">
+            <button aria-label="Next" onClick={next}>
               <svg viewBox="0 0 14 9" fill="none">
                 <path
                   d="M1 4.5h12M9 1l4 3.5L9 8"
@@ -553,28 +599,34 @@ function ReviewsSection() {
           </svg>
         </ScrollReveal>
         <div className="review-text">
-          <ScrollReveal>
-            <blockquote className="heading-display size-xl">
-              &ldquo;Precision Pay transformed our payroll operations. Their
-              attention to detail and compliance expertise is unmatched.&rdquo;
-            </blockquote>
-          </ScrollReveal>
-          <ScrollReveal delay={200}>
-            <div className="review-author">
-              <img
-                className="review-author-image"
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
-                alt="James Richardson"
-                loading="lazy"
-              />
-              <div className="review-author-info">
-                <span className="review-author-name">James Richardson</span>
-                <span className="mono-label review-author-role">
-                  Director, Precision Pay
-                </span>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <blockquote className="heading-display size-xl">
+                &ldquo;{reviews[index].quote}&rdquo;
+              </blockquote>
+              
+              <div className="review-author" style={{ marginTop: '4rem' }}>
+                <img
+                  className="review-author-image"
+                  src={reviews[index].image}
+                  alt={reviews[index].author}
+                  loading="lazy"
+                />
+                <div className="review-author-info">
+                  <span className="review-author-name">{reviews[index].author}</span>
+                  <span className="mono-label review-author-role">
+                    {reviews[index].role}
+                  </span>
+                </div>
               </div>
-            </div>
-          </ScrollReveal>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>
@@ -614,86 +666,14 @@ function CTASection() {
   );
 }
 
-/* ─── Partners Marquee ─── */
-const partners = [
-  {
-    name: "Cima Care",
-    url: "https://cimacare.co.uk",
-    logo: "/partners/CIMA-care-logo.png",
-  },
-  {
-    name: "Khired",
-    url: "https://khired.com",
-    logo: "/partners/Khired-white.webp.bv.webp",
-  },
-  {
-    name: "AWR Accountants",
-    url: "https://awraccountants.co.uk",
-    logo: "/partners/awr-logo.png",
-  },
-  {
-    name: "Live Long Genetics",
-    url: "https://livelonggenetics.com",
-    logo: "/partners/llg-nad-booster.png",
-  },
-];
-
-function PartnersMarquee() {
-  const doubled = [...partners, ...partners];
-  return (
-    <div className="partners-wrapper">
-      <div className="partners-marquee-label">
-        <ScrollReveal>
-          <span className="section-label">Trusted By Industry Leaders</span>
-        </ScrollReveal>
-      </div>
-      <div className="partners-marquee-band">
-        <div className="partners-marquee-track">
-          {doubled.map((p, i) => (
-            <a
-              key={`${p.name}-${i}`}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="partner-marquee-item"
-            >
-              {p.logo ? (
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  style={{
-                    // If it's a known transparent logo (Khired-white, CIMA), use brightness(0) to turn it pure black
-                    // Otherwise, use multiply to strip potential white box backgrounds and darken
-                    filter:
-                      p.logo.toLowerCase().includes("white") ||
-                      p.logo.includes("CIMA")
-                        ? "brightness(0)"
-                        : "grayscale(100%) contrast(200%)",
-                    mixBlendMode:
-                      p.logo.toLowerCase().includes("white") ||
-                      p.logo.includes("CIMA")
-                        ? "normal"
-                        : "multiply",
-                    // The CIMA logo file has built-in padding making it look small, so we scale it up
-                    transform: p.logo.includes("CIMA") ? "scale(2)" : "none",
-                  }}
-                />
-              ) : (
-                <span className="partner-marquee-text">{p.name}</span>
-              )}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 /* ─── Main Page Composition ─── */
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
-      <HeroSection />
+      <HeroSection onOpenModal={() => setIsModalOpen(true)} />
       <AboutSection />
       <ProductsSection />
       <ShowroomSection />
@@ -702,6 +682,8 @@ export default function Home() {
       <PartnersMarquee />
       <CTASection />
       <SiteFooter />
+
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
       {/* Film grain overlay */}
       <div className="grain-overlay" aria-hidden="true" />

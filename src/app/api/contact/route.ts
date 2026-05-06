@@ -2,8 +2,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Initialize Resend with your API key
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend lazily — avoids build crashes when the env var isn't set
+const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 export async function POST(request: Request) {
   try {
@@ -18,7 +20,15 @@ export async function POST(request: Request) {
       );
     }
 
-    // 2. Send the email using Resend
+    // 2. Check Resend is configured
+    if (!resend) {
+      return NextResponse.json(
+        { error: 'Email service is not configured. Please set the RESEND_API_KEY environment variable.' },
+        { status: 500 }
+      );
+    }
+
+    // 3. Send the email using Resend
     const data = await resend.emails.send({
       // The 'from' email MUST use the domain you verified in Resend (e.g., precision-pay.co.uk)
       from: 'Precision Pay Website <info@precision-pay.co.uk>', 
