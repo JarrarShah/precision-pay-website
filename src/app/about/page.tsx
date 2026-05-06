@@ -294,7 +294,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Privacy Policy Section ── */}
-      <section id="privacy" className="section-text-block" style={{ backgroundColor: '#f0ece7', borderTop: '1px solid var(--color-border)' }}>
+      {/* <section id="privacy" className="section-text-block" style={{ backgroundColor: '#f0ece7', borderTop: '1px solid var(--color-border)' }}>
         <div className="text-block-grid">
           <ScrollReveal>
             <span className="section-label">Legal & Privacy</span>
@@ -331,7 +331,7 @@ export default function AboutPage() {
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <SiteFooter />
 

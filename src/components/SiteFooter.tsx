@@ -156,7 +156,7 @@ export default function SiteFooter() {
             <a href="/about">About</a>
             <a href="/services">Services</a>
             <a href="/contact">Contact</a>
-            <a href="/about#privacy">Privacy</a>
+            {/* <a href="/about#privacy">Privacy</a> */}
           </div>
         </div>
       </div>
