@@ -4,11 +4,13 @@ import { useRef, use } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
+import PartnersMarquee from '@/components/PartnersMarquee';
 
 const industriesData: Record<string, any> = {
   'healthcare': {
     title: 'Healthcare',
-    heroImage: 'https://images.unsplash.com/photo-1576091160550-2173ff9e5eb3?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Precision payroll for vital services.',
     description: 'We understand the unique complexities of healthcare payroll, from calculating unsocial hours to managing multi-site staff consolidation.',
     points: [
@@ -20,7 +22,7 @@ const industriesData: Record<string, any> = {
   },
   'care-homes': {
     title: 'Care Homes & Social Care',
-    heroImage: 'https://images.unsplash.com/photo-1574068560867-27b9c6a1e948?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2070&auto=format&fit=crop',
     tagline: 'Compassionate care requires precise payroll.',
     description: 'Dedicated payroll support for the care sector. We manage complex shift patterns, sleep-in payments, and ensure your payroll practices remain fully compliant with CQC standards.',
     points: [
@@ -56,7 +58,7 @@ const industriesData: Record<string, any> = {
   },
   'construction': {
     title: 'Construction & Trades',
-    heroImage: 'https://images.unsplash.com/photo-1541888087-bce4c6cebbd2?q=80&w=2070&auto=format&fit=crop',
+    heroImage: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop',
     tagline: 'CIS compliance built on solid foundations.',
     description: 'Bespoke CIS-compliant payroll designed explicitly for the construction industry. We manage subcontractor verification, complex CIS deductions, and seamless monthly returns to HMRC.',
     points: [
@@ -184,6 +186,8 @@ export default function IndustryDetail({ params }: { params: Promise<{ slug: str
           <div />
         </div>
       </section>
+      <PartnersMarquee />
+      <SiteFooter />
       <div className="grain-overlay" aria-hidden="true" />
     </>
   );

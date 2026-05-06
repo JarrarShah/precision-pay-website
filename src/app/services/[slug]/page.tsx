@@ -4,6 +4,8 @@ import { useRef, use } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
+import PartnersMarquee from '@/components/PartnersMarquee';
 
 const servicesData: Record<string, any> = {
   'processing': {
@@ -196,6 +198,8 @@ export default function ServiceDetail({ params }: { params: Promise<{ slug: stri
           <div />
         </div>
       </section>
+      <PartnersMarquee />
+      <SiteFooter />
       <div className="grain-overlay" aria-hidden="true" />
     </>
   );

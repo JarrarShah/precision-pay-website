@@ -5,6 +5,7 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
+import PartnersMarquee from '@/components/PartnersMarquee';
 
 function ArrowIcon() {
   return (
@@ -311,6 +312,9 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Partners Marquee ── */}
+      <PartnersMarquee />
 
       {/* ── Map Section ── */}
       <section className="section-map">

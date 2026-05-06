@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
+import PartnersMarquee from '@/components/PartnersMarquee';
 
 /* ─── Shared Arrow Icon ─── */
 function ArrowIcon() {
@@ -258,24 +259,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Partners ── */}
-      <section className="section-partners">
-        <div className="top-border" style={{ margin: '0 var(--section-pad)' }}>
-          <ScrollReveal>
-            <span className="section-label">Partners & Accreditations</span>
-          </ScrollReveal>
-        </div>
-        <ScrollReveal delay={200}>
-          <div className="partners-row">
-            <div className="partner-logo-item">
-              <span className="partner-name">Live Long Genetics</span>
-            </div>
-            <div className="partner-logo-item">
-              <span className="partner-name">Auto Enrolment</span>
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
+      {/* ── Partners Marquee ── */}
+      <PartnersMarquee />
 
       {/* ── CTA ── */}
       <section className="section-cta">
@@ -305,6 +290,46 @@ export default function AboutPage() {
             </ScrollReveal>
           </div>
           <div />
+        </div>
+      </section>
+
+      {/* ── Privacy Policy Section ── */}
+      <section id="privacy" className="section-text-block" style={{ backgroundColor: '#f0ece7', borderTop: '1px solid var(--color-border)' }}>
+        <div className="text-block-grid">
+          <ScrollReveal>
+            <span className="section-label">Legal & Privacy</span>
+          </ScrollReveal>
+          <div className="text-block-right">
+            <ScrollReveal>
+              <h2 className="heading-display size-lg">Privacy Commitment</h2>
+            </ScrollReveal>
+            <ScrollReveal delay={150}>
+              <div className="body-text" style={{ marginTop: '2rem', fontSize: '1.6rem', opacity: 1 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <p>
+                    At Precision Pay, we take your data security and privacy with absolute seriousness. 
+                    As a payroll provider, we handle sensitive information every day, and our systems 
+                    are built to maintain the highest standards of confidentiality and compliance.
+                  </p>
+                  <p>
+                    <strong>Data Protection:</strong> We are fully GDPR compliant. All data processed through our 
+                    partnership with software providers like BrightPay is encrypted and stored in secure UK-based 
+                    data centers. We never sell your data or share it with third parties for marketing purposes.
+                  </p>
+                  <p>
+                    <strong>Information Collection:</strong> We collect only the data necessary to provide accurate 
+                    payroll and HR services. This includes employee names, contact details, financial information, 
+                    and employment records required for statutory compliance.
+                  </p>
+                  <p>
+                    <strong>Your Rights:</strong> You have the right to access, rectify, or request the deletion of your 
+                    data at any time. For any privacy-related inquiries, please contact our Data Protection Officer 
+                    at <a href="mailto:privacy@precision-pay.co.uk" style={{ textDecoration: 'underline', color: 'inherit' }}>privacy@precision-pay.co.uk</a>.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 

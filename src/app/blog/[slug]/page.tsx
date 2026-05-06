@@ -4,6 +4,8 @@ import { useRef, use } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import ScrollReveal from '@/components/ScrollReveal';
+import SiteFooter from '@/components/SiteFooter';
+import PartnersMarquee from '@/components/PartnersMarquee';
 
 // Reusing same posts array for details lookup
 const postsData: Record<string, any> = {
@@ -160,6 +162,9 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
           </div>
         </div>
       </section>
+      
+      <PartnersMarquee />
+      <SiteFooter />
       
       <div className="grain-overlay" aria-hidden="true" />
     </>
