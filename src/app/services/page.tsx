@@ -2,9 +2,12 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
 import PartnersMarquee from '@/components/PartnersMarquee';
+import { useBooking } from '@/context/BookingContext';
 
 function ArrowIcon() {
   return (
@@ -69,16 +72,13 @@ function ServiceBlock({
             </motion.li>
           ))}
         </ul>
-        <motion.a
+        <Link
           href={`/services/${slug}`}
           className="btn btn-dark"
           style={{ marginTop: '3rem' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.8, duration: 0.5 }}
         >
           View details
-        </motion.a>
+        </Link>
       </motion.div>
       <motion.div
         ref={imgRef}
@@ -86,8 +86,11 @@ function ServiceBlock({
         initial={{ opacity: 0, scale: 0.95 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        style={{ position: 'relative', overflow: 'hidden' }}
       >
-        <motion.img src={image} alt={title} style={{ y: imgY }} loading="lazy" />
+        <motion.div style={{ y: imgY, height: '120%', width: '100%', position: 'absolute', top: '-10%' }}>
+          <Image src={image} alt={title} fill className="object-cover" />
+        </motion.div>
       </motion.div>
     </div>
   );
@@ -119,6 +122,7 @@ export default function ServicesPage() {
   const heroRef = useRef<HTMLElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const isHeroInView = useInView(heroTextRef, { once: true });
+  const { openBooking } = useBooking();
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -135,11 +139,15 @@ export default function ServicesPage() {
       {/* ── Hero ── */}
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-bg">
-          <motion.img
-            src="https://images.unsplash.com/photo-1664575599736-c5197c684128?q=80&w=2070&auto=format&fit=crop"
-            alt="Financial data and analytics"
-            style={{ y: heroImgY }}
-          />
+          <motion.div style={{ y: heroImgY, height: '100%', width: '100%', position: 'relative' }}>
+            <Image
+              src="https://images.unsplash.com/photo-1664575599736-c5197c684128?q=80&w=2070&auto=format&fit=crop"
+              alt="Financial data and analytics"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
         </div>
         <motion.div className="page-hero-content" style={{ opacity: heroOpacity }} ref={heroTextRef}>
           <motion.span
@@ -316,14 +324,14 @@ export default function ServicesPage() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <div className="cta-buttons">
-                <a href="/contact" className="btn btn-dark">
+                <Link href="/contact" className="btn btn-dark">
                   <ArrowIcon />
                   Get a quote
-                </a>
-                <a href="/industries" className="btn btn-light">
+                </Link>
+                <button onClick={openBooking} className="btn btn-light">
                   <ArrowIcon />
-                  View industries
-                </a>
+                  Book a call
+                </button>
               </div>
             </ScrollReveal>
           </div>

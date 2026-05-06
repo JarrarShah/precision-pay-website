@@ -1,18 +1,21 @@
 // src/app/page.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useBooking } from "@/context/BookingContext";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteFooter from "@/components/SiteFooter";
 import PartnersMarquee from "@/components/PartnersMarquee";
 import BookingModal from "@/components/BookingModal";
-import { useState } from "react";
 
-const HeroBackground = dynamic(() => import("@/components/HeroBackground"), {
-  ssr: false,
-});
+// HeroBackground is disabled in the UI for now
+// const HeroBackground = dynamic(() => import("@/components/HeroBackground"), {
+//   ssr: false,
+// });
 
 /* ─── Reusable Icons ─── */
 function ArrowIcon() {
@@ -44,7 +47,8 @@ function ProjectArrow() {
 }
 
 /* ─── Hero Section ─── */
-function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
+function HeroSection() {
+  const { openBooking } = useBooking();
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -139,7 +143,7 @@ function HeroSection({ onOpenModal }: { onOpenModal: () => void }) {
         </h1>
         
         <motion.button
-          onClick={onOpenModal}
+          onClick={openBooking}
           className="btn btn-light"
           style={{ 
             color: "white", 
@@ -242,10 +246,10 @@ function ProductsSection() {
                 software, and a zero-error guarantee. Designed for growing
                 businesses that need to trust their payroll.
               </p>
-              <a href="/services" className="btn btn-dark">
+              <Link href="/services" className="btn btn-dark">
                 <ArrowIcon />
                 Discover services
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -267,7 +271,7 @@ function ProductCard({
   service: { title: string; slug: string; img: string };
   index: number;
 }) {
-  const cardRef = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-80px" });
 
   const { scrollYProgress } = useScroll({
@@ -278,22 +282,24 @@ function ProductCard({
   const y = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
 
   return (
-    <motion.a
-      href={`/services/${service.slug}`}
+    <motion.div
       className="product-card"
       ref={cardRef}
       initial={{ opacity: 0, y: 80 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
       transition={{ delay: index * 0.12, duration: 1, ease: [0.16, 1, 0.3, 1] }}
     >
+      <Link href={`/services/${service.slug}`} className="absolute inset-0 z-10" aria-label={service.title} />
       <span className="product-title">{service.title}</span>
-      <motion.img
-        src={service.img}
-        alt={service.title}
-        style={{ y }}
-        loading="lazy"
-      />
-    </motion.a>
+      <motion.div style={{ y, position: 'relative', height: '100%', width: '100%' }}>
+        <Image
+          src={service.img}
+          alt={service.title}
+          fill
+          className="object-cover"
+        />
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -382,7 +388,7 @@ function ShowroomSection() {
                   speed.
                 </p>
               </div>
-              <a
+              <Link
                 href="/contact"
                 className="btn btn-glass"
                 style={{
@@ -395,7 +401,7 @@ function ShowroomSection() {
               >
                 <ArrowIcon />
                 EXPLORE ECOSYSTEM
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>
@@ -419,24 +425,14 @@ function ShowroomSection() {
               background: "#000",
             }}
           >
-            <motion.img
-              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop"
-              alt="Business consultation meeting"
-              style={{
-                scale: bgScale,
-                opacity: imgOpacity,
-                x: "-50%",
-                y: "-50%",
-                width: "100vw",
-                height: "100vh",
-                objectFit: "cover",
-                maxWidth: "none",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-              }}
-              loading="lazy"
-            />
+            <motion.div style={{ scale: bgScale, opacity: imgOpacity, position: 'absolute', inset: 0 }}>
+              <Image
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop"
+                alt="Business consultation meeting"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -483,9 +479,9 @@ function ProjectsSection() {
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <a href="/industries" className="btn btn-dark">
+              <Link href="/industries" className="btn btn-dark">
                 <ArrowIcon /> View projects
-              </a>
+              </Link>
             </ScrollReveal>
           </div>
         </div>
@@ -506,12 +502,11 @@ function ProjectRow({
   project: { name: string; slug: string; tags: string[] };
   index: number;
 }) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <motion.a
-      href={`/industries/${project.slug}`}
+    <motion.div
       className="project-row"
       ref={ref}
       initial={{ opacity: 0, x: -30 }}
@@ -522,6 +517,7 @@ function ProjectRow({
         ease: [0.16, 1, 0.3, 1],
       }}
     >
+      <Link href={`/industries/${project.slug}`} className="absolute inset-0 z-10" aria-label={project.name} />
       <h3 className="project-name">{project.name}</h3>
       <div className="project-tags">
         {project.tags.map((tag) => (
@@ -531,7 +527,7 @@ function ProjectRow({
         ))}
       </div>
       <ProjectArrow />
-    </motion.a>
+    </motion.div>
   );
 }
 
@@ -612,11 +608,12 @@ function ReviewsSection() {
               </blockquote>
               
               <div className="review-author" style={{ marginTop: '4rem' }}>
-                <img
+                <Image
                   className="review-author-image"
                   src={reviews[index].image}
                   alt={reviews[index].author}
-                  loading="lazy"
+                  width={60}
+                  height={60}
                 />
                 <div className="review-author-info">
                   <span className="review-author-name">{reviews[index].author}</span>
@@ -651,12 +648,12 @@ function CTASection() {
           </ScrollReveal>
           <ScrollReveal delay={200}>
             <div className="cta-buttons">
-              <a href="/about" className="btn btn-dark">
+              <Link href="/about" className="btn btn-dark">
                 <ArrowIcon /> Our approach
-              </a>
-              <a href="/contact" className="btn btn-light">
+              </Link>
+              <Link href="/contact" className="btn btn-light">
                 <ArrowIcon /> Get in touch
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -669,11 +666,9 @@ function CTASection() {
 
 /* ─── Main Page Composition ─── */
 export default function Home() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <>
-      <HeroSection onOpenModal={() => setIsModalOpen(true)} />
+      <HeroSection />
       <AboutSection />
       <ProductsSection />
       <ShowroomSection />
@@ -682,9 +677,6 @@ export default function Home() {
       <PartnersMarquee />
       <CTASection />
       <SiteFooter />
-
-      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
       {/* Film grain overlay */}
       <div className="grain-overlay" aria-hidden="true" />
     </>
