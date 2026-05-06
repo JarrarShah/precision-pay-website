@@ -2,9 +2,12 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
 import PartnersMarquee from '@/components/PartnersMarquee';
+import { useBooking } from '@/context/BookingContext';
 
 function ArrowIcon() {
   return (
@@ -51,7 +54,9 @@ function IndustryCard({
       transition={{ duration: 0.9, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
       <div ref={imgRef} className="industry-card-image">
-        <motion.img src={image} alt={title} style={{ scale: imgScale }} loading="lazy" />
+        <motion.div style={{ scale: imgScale, height: '100%', width: '100%', position: 'relative' }}>
+          <Image src={image} alt={title} fill className="object-cover" />
+        </motion.div>
         <div className="industry-card-overlay">
           <h3 className="industry-card-title">{title}</h3>
         </div>
@@ -66,9 +71,9 @@ function IndustryCard({
             </li>
           ))}
         </ul>
-        <a href={`/industries/${slug}`} className="btn btn-dark" style={{ marginTop: '2rem' }}>
+        <Link href={`/industries/${slug}`} className="btn btn-dark" style={{ marginTop: '2rem' }}>
           View industry
-        </a>
+        </Link>
       </div>
     </motion.div>
   );
@@ -78,6 +83,7 @@ export default function IndustriesPage() {
   const heroRef = useRef<HTMLElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
   const isHeroInView = useInView(heroTextRef, { once: true });
+  const { openBooking } = useBooking();
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -169,11 +175,15 @@ export default function IndustriesPage() {
       {/* ── Hero ── */}
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-bg">
-          <motion.img
-            src="https://images.unsplash.com/photo-1580983559367-0dc2f8934365?q=80&w=2070&auto=format&fit=crop"
-            alt="Diverse industries we serve"
-            style={{ y: heroImgY }}
-          />
+          <motion.div style={{ y: heroImgY, height: '100%', width: '100%', position: 'relative' }}>
+            <Image
+              src="https://images.unsplash.com/photo-1580983559367-0dc2f8934365?q=80&w=2070&auto=format&fit=crop"
+              alt="Diverse industries we serve"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
         </div>
         <motion.div className="page-hero-content" style={{ opacity: heroOpacity }} ref={heroTextRef}>
           <motion.span
@@ -210,10 +220,12 @@ export default function IndustriesPage() {
               <span className="section-label">Sector Expertise</span>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <div className="sector-expertise-image-wrap">
-                <img 
+              <div className="sector-expertise-image-wrap" style={{ position: 'relative', height: '400px' }}>
+                <Image 
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" 
                   alt="Team collaboration" 
+                  fill
+                  className="object-cover"
                 />
               </div>
             </ScrollReveal>
@@ -281,14 +293,14 @@ export default function IndustriesPage() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <div className="cta-buttons">
-                <a href="/contact" className="btn btn-dark">
+                <Link href="/contact" className="btn btn-dark">
                   <ArrowIcon />
                   Get a quote
-                </a>
-                <a href="/services" className="btn btn-light">
+                </Link>
+                <button onClick={openBooking} className="btn btn-light">
                   <ArrowIcon />
-                  View services
-                </a>
+                  Book a call
+                </button>
               </div>
             </ScrollReveal>
           </div>

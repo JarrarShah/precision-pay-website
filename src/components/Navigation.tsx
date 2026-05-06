@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useBooking } from '@/context/BookingContext';
 
 const allLinks = [
   { href: '/about', label: 'About' },
@@ -18,6 +19,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -129,9 +131,8 @@ export default function Navigation() {
           onMouseOut={(e) => e.currentTarget.style.color = textMuted}
         >Blog</Link>
 
-        {/* ─── Desktop CTA ─── */}
-        <Link
-          href="/contact"
+        <button
+          onClick={openBooking}
           className="nav-desktop-link"
           style={{
             padding: '0.8rem 2rem',
@@ -140,14 +141,27 @@ export default function Navigation() {
             fontWeight: 600,
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            textDecoration: 'none',
             backgroundColor: scrolled ? 'black' : 'white',
             color: scrolled ? 'white' : 'black',
             transition: 'all 0.3s ease',
             whiteSpace: 'nowrap',
           }}
         >
-          Get a quote
+          Book a call
+        </button>
+
+        {/* ─── Desktop CTA ─── */}
+        <Link
+          href="/contact"
+          className="nav-desktop-link"
+          style={{
+            color: textMuted,
+            transition: 'color 0.4s ease',
+          }}
+          onMouseOver={(e) => e.currentTarget.style.color = textColor}
+          onMouseOut={(e) => e.currentTarget.style.color = textMuted}
+        >
+          Contact
         </Link>
 
         {/* ─── Mobile hamburger button ─── */}
@@ -273,6 +287,29 @@ export default function Navigation() {
                 </Link>
               </motion.div>
             ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              style={{ marginTop: '2rem' }}
+            >
+              <button
+                onClick={() => {
+                  setMenuOpen(false);
+                  openBooking();
+                }}
+                className="btn btn-dark"
+                style={{
+                  padding: '2rem 4rem',
+                  fontSize: '1.6rem',
+                  borderRadius: '10rem',
+                }}
+              >
+                Book a call
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

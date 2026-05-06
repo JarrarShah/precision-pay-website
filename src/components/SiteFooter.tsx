@@ -1,17 +1,11 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 
-function ArrowIcon() {
-  return (
-    <svg viewBox="0 0 14 11" fill="none" className="btn-arrow">
-      <path d="M0.6 0V6H13.1" stroke="currentColor" strokeWidth="1.2" />
-      <rect x="9.19" y="2.23" width="5.56" height="5.56" transform="rotate(45 9.19 2.23)" stroke="currentColor" strokeWidth="1.2" />
-    </svg>
-  );
-}
+// Removed unused ArrowIcon as it was reported by lint
 
 /* ─── Contact Form Section ─── */
 function ContactFormSection() {
@@ -153,10 +147,10 @@ export default function SiteFooter() {
         <div className="site-footer-minimal-inner">
           <span>© 2026 Precision Pay. All rights reserved.</span>
           <div className="site-footer-bottom-links">
-            <a href="/about">About</a>
-            <a href="/services">Services</a>
-            <a href="/contact">Contact</a>
-            {/* <a href="/about#privacy">Privacy</a> */}
+            <Link href="/about">About</Link>
+            <Link href="/services">Services</Link>
+            <Link href="/contact">Contact</Link>
+            {/* <Link href="/about#privacy">Privacy</Link> */}
           </div>
         </div>
       </div>

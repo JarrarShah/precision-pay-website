@@ -1,26 +1,44 @@
 // src/app/about/page.tsx
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import ScrollReveal from '@/components/ScrollReveal';
-import SiteFooter from '@/components/SiteFooter';
-import PartnersMarquee from '@/components/PartnersMarquee';
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import ScrollReveal from "@/components/ScrollReveal";
+import SiteFooter from "@/components/SiteFooter";
+import PartnersMarquee from "@/components/PartnersMarquee";
 
 /* ─── Shared Arrow Icon ─── */
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 14 11" fill="none" className="btn-arrow">
       <path d="M0.6 0V6H13.1" stroke="currentColor" strokeWidth="1.2" />
-      <rect x="9.19" y="2.23" width="5.56" height="5.56" transform="rotate(45 9.19 2.23)" stroke="currentColor" strokeWidth="1.2" />
+      <rect
+        x="9.19"
+        y="2.23"
+        width="5.56"
+        height="5.56"
+        transform="rotate(45 9.19 2.23)"
+        stroke="currentColor"
+        strokeWidth="1.2"
+      />
     </svg>
   );
 }
 
 /* ─── Stats Counter ─── */
-function StatItem({ number, label, suffix = '' }: { number: string; label: string; suffix?: string }) {
+function StatItem({
+  number,
+  label,
+  suffix = "",
+}: {
+  number: string;
+  label: string;
+  suffix?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -30,16 +48,27 @@ function StatItem({ number, label, suffix = '' }: { number: string; label: strin
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <span className="stat-number">{number}{suffix}</span>
+      <span className="stat-number">
+        {number}
+        {suffix}
+      </span>
       <span className="stat-label mono-label">{label}</span>
     </motion.div>
   );
 }
 
 /* ─── Value Card ─── */
-function ValueCard({ index, title, description }: { index: string; title: string; description: string }) {
+function ValueCard({
+  index,
+  title,
+  description,
+}: {
+  index: string;
+  title: string;
+  description: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <motion.div
@@ -47,7 +76,11 @@ function ValueCard({ index, title, description }: { index: string; title: string
       className="value-card"
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: parseFloat(index) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{
+        duration: 0.8,
+        delay: parseFloat(index) * 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
     >
       <span className="value-index mono-label">{index}</span>
       <h3 className="value-title">{title}</h3>
@@ -57,9 +90,19 @@ function ValueCard({ index, title, description }: { index: string; title: string
 }
 
 /* ─── Team Member ─── */
-function TeamMember({ name, role, image, delay }: { name: string; role: string; image: string; delay: number }) {
+function TeamMember({
+  name,
+  role,
+  image,
+  delay,
+}: {
+  name: string;
+  role: string;
+  image: string;
+  delay: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
     <motion.div
@@ -70,7 +113,7 @@ function TeamMember({ name, role, image, delay }: { name: string; role: string; 
       transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="team-member-image">
-        <img src={image} alt={name} loading="lazy" />
+        <Image src={image} alt={name} width={400} height={400} className="object-cover" />
       </div>
       <h4 className="team-member-name">{name}</h4>
       <span className="mono-label team-member-role">{role}</span>
@@ -85,43 +128,65 @@ export default function AboutPage() {
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
-  const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
+  const heroImgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  const heroWords = 'Built for SMBs. Powered by expertise.'.split(' ');
+  const heroWords = "Built for SMBs. Powered by expertise.".split(" ");
 
   return (
     <>
       {/* ── Hero ── */}
       <section className="page-hero" ref={heroRef}>
         <div className="page-hero-bg">
-          <motion.img
-            src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2070&auto=format&fit=crop"
-            alt="Professional team meeting"
-            style={{ y: heroImgY }}
-          />
+          <motion.div style={{ y: heroImgY, height: "100%", width: "100%", position: "relative" }}>
+            <Image
+              src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=2070&auto=format&fit=crop"
+              alt="Professional team meeting"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
         </div>
-        <motion.div className="page-hero-content" style={{ opacity: heroOpacity }} ref={heroTextRef}>
+        <motion.div
+          className="page-hero-content"
+          style={{ opacity: heroOpacity }}
+          ref={heroTextRef}
+        >
           <motion.span
             className="section-label"
-            style={{ color: 'white' }}
+            style={{ color: "white" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
             About Us
           </motion.span>
-          <h1 className="heading-display size-xl" style={{ color: 'white', maxWidth: '80rem', marginTop: '3rem' }}>
+          <h1
+            className="heading-display size-xl"
+            style={{ color: "white", maxWidth: "80rem", marginTop: "3rem" }}
+          >
             {heroWords.map((word, i) => (
-              <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.3em' }}>
+              <span
+                key={i}
+                style={{
+                  display: "inline-block",
+                  overflow: "hidden",
+                  marginRight: "0.3em",
+                }}
+              >
                 <motion.span
-                  style={{ display: 'inline-block' }}
-                  initial={{ y: '110%' }}
-                  animate={isHeroInView ? { y: '0%' } : {}}
-                  transition={{ delay: 0.5 + i * 0.07, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ display: "inline-block" }}
+                  initial={{ y: "110%" }}
+                  animate={isHeroInView ? { y: "0%" } : {}}
+                  transition={{
+                    delay: 0.5 + i * 0.07,
+                    duration: 0.9,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                 >
                   {word}
                 </motion.span>
@@ -140,22 +205,27 @@ export default function AboutPage() {
           <div className="text-block-right">
             <ScrollReveal>
               <h2 className="heading-display size-lg">
-                Precision Pay exists to remove payroll stress from SMBs. Full stop.
+                Precision Pay exists to remove payroll stress from SMBs. Full
+                stop.
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={150}>
-              <p className="body-text" style={{ marginTop: '3rem' }}>
-                We're a dedicated team of payroll and HR experts who believe that accurate, compliant payroll shouldn't require 
-                constant worry. Using award-winning software like BrightPay, we deliver outsourced payroll, specialized HR services, 
-                and genuine support. From accountants to schools, startups to established firms—we partner with businesses that value 
-                precision, reliability, and peace of mind.
+              <p className="body-text" style={{ marginTop: "3rem" }}>
+                We&apos;re a dedicated team of payroll and HR experts who believe
+                that accurate, compliant payroll shouldn&apos;t require constant
+                worry. Using award-winning software like BrightPay, we deliver
+                outsourced payroll, specialized HR services, and genuine
+                support. From accountants to schools, startups to established
+                firms—we partner with businesses that value precision,
+                reliability, and peace of mind.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={250}>
-              <p className="body-text" style={{ marginTop: '2rem' }}>
-                Our team combines deep payroll expertise with genuine care for the businesses we serve. 
-                We don&apos;t just process numbers — we build lasting partnerships founded on trust, 
-                clarity, and a shared commitment to getting things right.
+              <p className="body-text" style={{ marginTop: "2rem" }}>
+                Our team combines deep payroll expertise with genuine care for
+                the businesses we serve. We don&apos;t just process numbers — we
+                build lasting partnerships founded on trust, clarity, and a
+                shared commitment to getting things right.
               </p>
             </ScrollReveal>
           </div>
@@ -165,7 +235,11 @@ export default function AboutPage() {
       {/* ── Stats ── */}
       <section className="section-stats">
         <div className="stats-grid">
-          <StatItem number="500" suffix="+" label="Employees Processed Monthly" />
+          <StatItem
+            number="500"
+            suffix="+"
+            label="Employees Processed Monthly"
+          />
           <StatItem number="99.9" suffix="%" label="Accuracy Rate" />
           <StatItem number="24" suffix="hr" label="Average Turnaround" />
           <StatItem number="5.0" label="Google Review Score" />
@@ -174,7 +248,7 @@ export default function AboutPage() {
 
       {/* ── Values ── */}
       <section className="section-values">
-        <div className="top-border" style={{ margin: '0 var(--section-pad)' }}>
+        <div className="top-border" style={{ margin: "0 var(--section-pad)" }}>
           <ScrollReveal>
             <span className="section-label">Our Core Values</span>
           </ScrollReveal>
@@ -206,18 +280,20 @@ export default function AboutPage() {
       {/* ── Image Band ── */}
       <section className="section-image-band">
         <div className="image-band-grid">
-          <div className="image-band-item">
-            <img
+          <div className="image-band-item" style={{ position: "relative", height: "400px" }}>
+            <Image
               src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
               alt="Team strategy meeting"
-              loading="lazy"
+              fill
+              className="object-cover"
             />
           </div>
-          <div className="image-band-item">
-            <img
+          <div className="image-band-item" style={{ position: "relative", height: "400px" }}>
+            <Image
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=2087&auto=format&fit=crop"
               alt="Professional office collaboration"
-              loading="lazy"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
@@ -225,13 +301,16 @@ export default function AboutPage() {
 
       {/* ── Team ── */}
       <section className="section-team">
-        <div className="top-border" style={{ margin: '0 var(--section-pad)' }}>
+        <div className="top-border" style={{ margin: "0 var(--section-pad)" }}>
           <div className="team-header">
             <ScrollReveal>
               <span className="section-label">Our Team</span>
             </ScrollReveal>
             <ScrollReveal delay={100}>
-              <h2 className="heading-display size-lg" style={{ maxWidth: '50rem', marginTop: '2rem' }}>
+              <h2
+                className="heading-display size-lg"
+                style={{ maxWidth: "50rem", marginTop: "2rem" }}
+              >
                 Meet the people behind every accurate payslip.
               </h2>
             </ScrollReveal>
@@ -278,14 +357,14 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <div className="cta-buttons">
-                <a href="/services" className="btn btn-dark">
+                <Link href="/services" className="btn btn-dark">
                   <ArrowIcon />
                   Our services
-                </a>
-                <a href="/contact" className="btn btn-light">
+                </Link>
+                <Link href="/contact" className="btn btn-light">
                   <ArrowIcon />
                   Get in touch
-                </a>
+                </Link>
               </div>
             </ScrollReveal>
           </div>

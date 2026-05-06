@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef, use } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -93,8 +95,6 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
   const slug = unwrappedParams.slug;
   const post = postsData[slug];
 
-  if (!post) return notFound();
-
   const heroRef = useRef<HTMLElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
 
@@ -103,8 +103,10 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
     offset: ['start start', 'end start'],
   });
 
-  const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
+  if (!post) return notFound();
 
   return (
     <>
@@ -155,9 +157,9 @@ export default function BlogPostDetail({ params }: { params: Promise<{ slug: str
           <div>
             <ScrollReveal><h2 className="heading-display size-lg" style={{ maxWidth: '60rem', margin: '0 auto 4rem' }}>Stay updated with our latest insights.</h2></ScrollReveal>
             <ScrollReveal delay={200}>
-              <a href="/blog" className="btn btn-dark" style={{ margin: '0 auto' }}>
+              <Link href="/blog" className="btn btn-dark" style={{ margin: '0 auto' }}>
                 Back to Editorial
-              </a>
+              </Link>
             </ScrollReveal>
           </div>
         </div>

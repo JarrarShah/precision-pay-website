@@ -121,15 +121,18 @@ export default function ContactPage() {
             <ScrollReveal>
               <span className="section-label">Get In Touch</span>
             </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <h2 className="heading-display size-lg" style={{ margin: '3rem 0' }}>
-                Ready for stress-free payroll?
+            <ScrollReveal>
+              <h2 className="heading-display size-lg">
+                We&apos;re here to help. Whether you have a question about our services 
+                or you&apos;re ready to start your payroll journey, we&apos;d love to 
+                hear from you.
               </h2>
             </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <p className="body-text">
-                Whether you're switching providers, exploring options, or ready to simplify your payroll—let's talk. 
-                Our team responds to all enquiries within 24 hours, and there's no obligation.
+            <ScrollReveal delay={150}>
+              <p className="body-text" style={{ marginTop: '3rem' }}>
+                Our team is available Monday through Friday, 9:00 AM to 5:30 PM. 
+                We aim to respond to all inquiries within 24 hours. If it&apos;s 
+                urgent, please give us a call.
               </p>
             </ScrollReveal>
 

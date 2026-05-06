@@ -3,6 +3,8 @@
 import { useRef, use } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteFooter from '@/components/SiteFooter';
 import PartnersMarquee from '@/components/PartnersMarquee';
@@ -92,12 +94,9 @@ function ArrowIcon() {
 }
 
 export default function IndustryDetail({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
-  // Fix for Next 15+ promise params while remaining backwards compatible
   const unwrappedParams = params instanceof Promise ? use(params) : params;
   const slug = unwrappedParams.slug;
   const data = industriesData[slug];
-
-  if (!data) return notFound();
 
   const heroRef = useRef<HTMLElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
@@ -111,11 +110,15 @@ export default function IndustryDetail({ params }: { params: Promise<{ slug: str
   const heroImgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
+  if (!data) return notFound();
+
   return (
     <>
       <section className="page-hero page-hero--short" ref={heroRef}>
         <div className="page-hero-bg">
-          <motion.img src={data.heroImage} alt={data.title} style={{ y: heroImgY }} />
+          <motion.div style={{ y: heroImgY, height: '100%', width: '100%', position: 'relative' }}>
+            <Image src={data.heroImage} alt={data.title} fill className="object-cover" priority />
+          </motion.div>
         </div>
         <motion.div className="page-hero-content" style={{ opacity: heroOpacity }} ref={heroTextRef}>
           <motion.span
@@ -153,8 +156,8 @@ export default function IndustryDetail({ params }: { params: Promise<{ slug: str
 
       <section className="section-duo" style={{ background: 'var(--color-bg)' }}>
         <div className="duo-grid" style={{ padding: '0 var(--section-pad) 8rem' }}>
-          <div className="parallax-img" style={{ height: '100%', minHeight: '40rem' }}>
-            <img src={data.heroImage} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div className="parallax-img" style={{ height: '100%', minHeight: '40rem', position: 'relative' }}>
+            <Image src={data.heroImage} alt="" fill className="object-cover" />
           </div>
           <div style={{ background: 'var(--color-cream)', padding: '5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <ScrollReveal>
@@ -178,8 +181,8 @@ export default function IndustryDetail({ params }: { params: Promise<{ slug: str
             <ScrollReveal><h2 className="heading-display size-xl">Tailored for your sector.</h2></ScrollReveal>
             <ScrollReveal delay={200}>
               <div className="cta-buttons">
-                <a href="/contact" className="btn btn-dark"><ArrowIcon />Get a quote</a>
-                <a href="/industries" className="btn btn-light"><ArrowIcon />All Industries</a>
+                <Link href="/contact" className="btn btn-dark"><ArrowIcon />Get a quote</Link>
+                <Link href="/industries" className="btn btn-light"><ArrowIcon />All Industries</Link>
               </div>
             </ScrollReveal>
           </div>

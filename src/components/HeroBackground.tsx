@@ -1,34 +1,34 @@
 // src/components/HeroBackground.tsx
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
+// Pre-generate stable random values outside of render to ensure purity
+const PARTICLE_COUNT = 800;
+const INITIAL_PARTICLES = {
+  positions: new Float32Array(PARTICLE_COUNT * 3).map(() => (Math.random() - 0.5) * 10),
+  velocities: new Float32Array(PARTICLE_COUNT * 3).map(() => (Math.random() - 0.5) * 0.002),
+};
+
+const INITIAL_ORBS = Array.from({ length: 4 }, () => ({
+  position: [(Math.random() - 0.5) * 6, (Math.random() - 0.5) * 4, (Math.random() - 0.5) * 3 - 1] as [number, number, number],
+  scale: 0.5 + Math.random() * 1.2,
+  speed: 0.3 + Math.random() * 0.5,
+  phase: Math.random() * Math.PI * 2,
+}));
+
 function Particles() {
   const meshRef = useRef<THREE.Points>(null);
-  const count = 800;
-  const mouseRef = useRef({ x: 0, y: 0 });
-
-  const [positions, velocities] = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const vel = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 10;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
-      pos[i * 3 + 2] = (Math.random() - 0.5) * 6;
-      vel[i * 3] = (Math.random() - 0.5) * 0.002;
-      vel[i * 3 + 1] = (Math.random() - 0.5) * 0.002;
-      vel[i * 3 + 2] = (Math.random() - 0.5) * 0.001;
-    }
-    return [pos, vel];
-  }, []);
+  const count = PARTICLE_COUNT;
 
   useFrame(({ clock }) => {
     if (!meshRef.current) return;
     const geo = meshRef.current.geometry;
     const posAttr = geo.attributes.position;
     const t = clock.getElapsedTime() * 0.15;
+    const velocities = INITIAL_PARTICLES.velocities;
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
@@ -54,9 +54,9 @@ function Particles() {
         <bufferAttribute
           attach="attributes-position"
           count={count}
-          array={positions}
+          array={INITIAL_PARTICLES.positions}
           itemSize={3}
-          args={[positions, 3]}
+          args={[INITIAL_PARTICLES.positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -74,25 +74,14 @@ function Particles() {
 
 function GlowOrbs() {
   const group = useRef<THREE.Group>(null);
-
-  const orbs = useMemo(() => {
-    return Array.from({ length: 4 }, (_, i) => ({
-      position: [
-        (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 4,
-        (Math.random() - 0.5) * 3 - 1,
-      ] as [number, number, number],
-      scale: 0.5 + Math.random() * 1.2,
-      speed: 0.3 + Math.random() * 0.5,
-      phase: Math.random() * Math.PI * 2,
-    }));
-  }, []);
+  const orbs = INITIAL_ORBS;
 
   useFrame(({ clock }) => {
     if (!group.current) return;
     const t = clock.getElapsedTime();
     group.current.children.forEach((child, i) => {
       const orb = orbs[i];
+      if (!orb) return;
       child.position.x =
         orb.position[0] + Math.sin(t * orb.speed + orb.phase) * 1.5;
       child.position.y =
