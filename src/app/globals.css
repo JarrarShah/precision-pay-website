@@ -994,12 +994,12 @@ body {
 .review-author {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .review-author-image {
-    width: 8rem;
-    height: 10rem;
+    width: 10rem;
+    height: 12rem;
     object-fit: cover;
     filter: grayscale(100%);
     flex-shrink: 0;
@@ -1012,26 +1012,30 @@ body {
 
 @media (min-width: 601px) {
     .review-author-image {
-        width: 17.3rem;
+        width: 25rem;
         height: auto;
-        aspect-ratio: 173 / 213;
+        aspect-ratio: 1 / 1.2;
     }
 }
 
 .review-author-info {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 1rem;
 }
 
 .review-author-name {
-    font-size: 2.4rem;
-    font-weight: 300;
-    line-height: 1.2;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
 .review-author-role {
     color: var(--color-muted);
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 
@@ -2229,6 +2233,7 @@ body {
     width: 100%;
     border-radius: 0;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .form-input:focus {
@@ -2460,6 +2465,7 @@ body {
     margin-bottom: 2rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2618,6 +2624,7 @@ body {
     width: 100%;
     border-radius: 0;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .footer-form-input:focus {

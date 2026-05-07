@@ -535,9 +535,9 @@ function ProjectRow({
 const reviews = [
   {
     quote: "Precision Pay transformed our payroll operations. Their attention to detail and compliance expertise is unmatched.",
-    author: "James Richardson",
-    role: "Director, Precision Pay",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop"
+    author: "James",
+    role: "Head of Product Development, Live Long Genetics",
+    image: "/james_head_of_product_development_1778153640728.png"
   },
   {
     quote: "Switching to Precision Pay was the best decision for our HR department. The automation saves us hours every week.",
@@ -612,8 +612,8 @@ function ReviewsSection() {
                   className="review-author-image"
                   src={reviews[index].image}
                   alt={reviews[index].author}
-                  width={60}
-                  height={60}
+                  width={250}
+                  height={300}
                 />
                 <div className="review-author-info">
                   <span className="review-author-name">{reviews[index].author}</span>
