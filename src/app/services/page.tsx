@@ -220,7 +220,7 @@ export default function ServicesPage() {
         <ServiceBlock
           index="02"
           title="HR & Leave Management"
-          description="Real-time holiday, sick leave, and parental leave management. Keep your team organized and ensure compliance with working time regulations."
+          description="Real-time holiday, sick leave, and parental leave management. Keep your team organised and ensure compliance with working time regulations."
           features={[
             'Annual leave management and tracking',
             'Sick leave and statutory absence recording',
@@ -252,7 +252,7 @@ export default function ServicesPage() {
 
         <ServiceBlock
           index="04"
-          title="Specialized Payroll Services"
+          title="Specialised Payroll Services"
           description="Tailored payroll solutions for accountants, educational institutions, international operations, and Irish payroll requirements."
           features={[
             'Accountant-specific payroll packages',
@@ -296,7 +296,7 @@ export default function ServicesPage() {
           <ProcessStep
             number="03"
             title="Dedicated Support"
-            description="You'll get a named Payroll Technician who knows your business. Not a call center—real expertise."
+            description="You'll get a named Payroll Technician who knows your business. Not a call centre—real expertise."
             delay={0.2}
           />
           <ProcessStep

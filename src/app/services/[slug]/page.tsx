@@ -24,7 +24,7 @@ const servicesData: Record<string, any> = {
       'BACS payment file prep'
     ],
     benefits: [
-      { title: 'Zero Errors', text: 'We eliminate miscalculations completely, ensuring employees trust their paychecks.' },
+      { title: 'Zero Errors', text: 'We eliminate miscalculations completely, ensuring employees trust their pay cheques.' },
       { title: 'Time Saved', text: 'Free up hundreds of hours previously spent on manual data entry.' },
       { title: 'Full Transparency', text: 'Clear reporting for management and transparent payslips for staff.' }
     ]

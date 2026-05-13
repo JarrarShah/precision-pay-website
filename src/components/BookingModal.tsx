@@ -115,7 +115,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                   </motion.div>
                   <h3 className="heading-display" style={{ fontSize: '2.2rem' }}>Request Received</h3>
                   <p className="body-text" style={{ marginTop: '1rem', fontSize: '1.4rem' }}>
-                    We&apos;ll call you shortly to finalize the switch.
+                    We&apos;ll call you shortly to finalise the switch.
                   </p>
                 </div>
               )}

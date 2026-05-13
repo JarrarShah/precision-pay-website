@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Precision Pay | Exceptional Payroll Services",
   description:
-    "Specializing in seamless, accurate, and rapid payroll processing. Bespoke payroll systems for ambitious companies — crafted with precision, clarity, and care.",
+    "Specialising in seamless, accurate, and rapid payroll processing. Bespoke payroll systems for ambitious companies — crafted with precision, clarity, and care.",
   keywords: ["payroll", "payroll services", "UK payroll", "tax compliance", "statutory compliance", "payroll processing"],
   openGraph: {
     title: "Precision Pay | Exceptional Payroll Services",
@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

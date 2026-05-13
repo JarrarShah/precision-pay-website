@@ -12,7 +12,7 @@ const posts = [
     slug: 'future-of-payroll',
     date: 'OCT 12, 2026',
     category: 'Industry Insights',
-    excerpt: 'As organizations shift permanently to distributed workforces, payroll compliance across borders remains a significant hurdle. We explore emerging frameworks designed to tackle multi-jurisdictional tax law.',
+    excerpt: 'As organisations shift permanently to distributed workforces, payroll compliance across borders remains a significant hurdle. We explore emerging frameworks designed to tackle multi-jurisdictional tax law.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop'
   },
   {
@@ -20,7 +20,7 @@ const posts = [
     slug: 'cross-border-compliance',
     date: 'SEP 28, 2026',
     category: 'Compliance',
-    excerpt: 'Managing payroll across multiple regions involves navigating complex labor laws and tax regulations. Learn how integrated software systems simplify international compliance.',
+    excerpt: 'Managing payroll across multiple regions involves navigating complex labour laws and tax regulations. Learn how integrated software systems simplify international compliance.',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop'
   },
   {

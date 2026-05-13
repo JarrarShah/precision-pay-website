@@ -225,7 +225,7 @@ function ProductsSection() {
       img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2111&auto=format&fit=crop",
     },
     {
-      title: "Specialized Services",
+      title: "Specialised Services",
       slug: "compliance",
       img: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop",
     },
@@ -546,7 +546,7 @@ const reviews = [
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop"
   },
   {
-    quote: "Their specialized support for construction CIS was exactly what we needed. Reliable, fast, and always compliant.",
+    quote: "Their specialised support for construction CIS was exactly what we needed. Reliable, fast, and always compliant.",
     author: "Mark Thompson",
     role: "Owner, Thompson Builds",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"

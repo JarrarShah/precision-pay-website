@@ -131,7 +131,7 @@ export default function ContactPage() {
             <ScrollReveal delay={150}>
               <p className="body-text" style={{ marginTop: '3rem' }}>
                 Our team is available Monday through Friday, 9:00 AM to 5:30 PM. 
-                We aim to respond to all inquiries within 24 hours. If it&apos;s 
+                We aim to respond to all enquiries within 24 hours. If it&apos;s 
                 urgent, please give us a call.
               </p>
             </ScrollReveal>

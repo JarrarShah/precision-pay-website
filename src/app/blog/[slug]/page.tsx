@@ -15,10 +15,10 @@ const postsData: Record<string, any> = {
     title: 'The Future of Payroll in a Remote-First World',
     date: 'OCT 12, 2026',
     category: 'Industry Insights',
-    excerpt: 'As organizations shift permanently to distributed workforces, payroll compliance across borders remains a significant hurdle.',
+    excerpt: 'As organisations shift permanently to distributed workforces, payroll compliance across borders remains a significant hurdle.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
     content: [
-      { type: 'p', text: 'The paradigm shift toward remote and hybrid work is no longer an experiment; it is the established foundation of the modern enterprise. However, while employees enjoy the benefits of global mobility, HR and finance departments are wrestling with unprecedently complex payroll structures.' },
+      { type: 'p', text: 'The paradigm shift towards remote and hybrid work is no longer an experiment; it is the established foundation of the modern enterprise. However, while employees enjoy the benefits of global mobility, HR and finance departments are wrestling with unprecedentedly complex payroll structures.' },
       { type: 'h2', text: 'Cross-Border Compliance Challenges' },
       { type: 'p', text: 'When a London-based company hires a developer in Lisbon and a designer in Berlin, local tax laws immediately apply. Employers must navigate differing rules for social security contributions, holiday pay, and mandatory benefits. The traditional single-country payroll software architecture fails to scale under these conditions.' },
       { type: 'blockquote', text: '“By 2028, over 35% of knowledge workers will be employed across borders, yet only 10% of global businesses admit to having a fully compliant framework ready.”' },
@@ -29,14 +29,14 @@ const postsData: Record<string, any> = {
     title: 'Navigating Cross-Border Payroll Compliance',
     date: 'SEP 28, 2026',
     category: 'Compliance',
-    excerpt: 'Managing payroll across multiple regions involves navigating complex labor laws and tax regulations. Learn how integrated software systems simplify international compliance.',
+    excerpt: 'Managing payroll across multiple regions involves navigating complex labour laws and tax regulations. Learn how integrated software systems simplify international compliance.',
     image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop',
     content: [
-      { type: 'p', text: 'As businesses expand globally, managing payroll across different jurisdictions introduces unprecedented complexity. Each country has its own distinct set of labor laws, tax codes, and statutory reporting requirements.' },
+      { type: 'p', text: 'As businesses expand globally, managing payroll across different jurisdictions introduces unprecedented complexity. Each country has its own distinct set of labour laws, tax codes, and statutory reporting requirements.' },
       { type: 'h2', text: 'The Complexity of Multi-Jurisdiction Logic' },
       { type: 'p', text: 'Calculating net pay for an employee in the UK versus an employee in Germany requires entirely different logic engines. From social security contributions to mandatory pension deductions and regional health insurance, the variables multiply rapidly.' },
-      { type: 'blockquote', text: 'Attempting to force fit international payroll into a localized system is the leading cause of compliance audits and financial penalties for expanding enterprises.' },
-      { type: 'p', text: 'At Precision Pay, we utilize dynamically updated regulatory databases that feed directly into our processing core. This ensures that every calculation, regardless of the employee\'s region, adheres to the latest localized compliance standards automatically.' }
+      { type: 'blockquote', text: 'Attempting to force fit international payroll into a localised system is the leading cause of compliance audits and financial penalties for expanding enterprises.' },
+      { type: 'p', text: 'At Precision Pay, we utilise dynamically updated regulatory databases that feed directly into our processing core. This ensures that every calculation, regardless of the employee\'s region, adheres to the latest localised compliance standards automatically.' }
     ]
   },
   'automating-pensions': {
@@ -84,7 +84,7 @@ const postsData: Record<string, any> = {
     content: [
       { type: 'p', text: 'Accountants excel at financial strategy, tax planning, and business advisory. Yet many find themselves bogged down in the minutiae of processing monthly client payrolls because it is an "expected" service.' },
       { type: 'h2', text: 'The Outsourced Advantage' },
-      { type: 'p', text: 'White-label payroll allows accountancy practices to offer top-tier payroll services without the overhead of maintaining specialized payroll staff. The bureau acts invisibly. Payslips bear the accountant’s logo, portals are branded, but the liability, software costs, and processing headaches belong to the bureau.' },
+      { type: 'p', text: 'White-label payroll allows accountancy practices to offer top-tier payroll services without the overhead of maintaining specialised payroll staff. The bureau acts invisibly. Payslips bear the accountant’s logo, portals are branded, but the liability, software costs, and processing headaches belong to the bureau.' },
       { type: 'p', text: 'This pivot allows accountants to focus on high-margin advisory work while maintaining full-service client relationships.' }
     ]
   }

@@ -214,7 +214,7 @@ export default function AboutPage() {
                 We&apos;re a dedicated team of payroll and HR experts who believe
                 that accurate, compliant payroll shouldn&apos;t require constant
                 worry. Using award-winning software like BrightPay, we deliver
-                outsourced payroll, specialized HR services, and genuine
+                outsourced payroll, specialised HR services, and genuine
                 support. From accountants to schools, startups to established
                 firms—we partner with businesses that value precision,
                 reliability, and peace of mind.
@@ -393,7 +393,7 @@ export default function AboutPage() {
                   <p>
                     <strong>Data Protection:</strong> We are fully GDPR compliant. All data processed through our 
                     partnership with software providers like BrightPay is encrypted and stored in secure UK-based 
-                    data centers. We never sell your data or share it with third parties for marketing purposes.
+                    data centres. We never sell your data or share it with third parties for marketing purposes.
                   </p>
                   <p>
                     <strong>Information Collection:</strong> We collect only the data necessary to provide accurate 
@@ -402,7 +402,7 @@ export default function AboutPage() {
                   </p>
                   <p>
                     <strong>Your Rights:</strong> You have the right to access, rectify, or request the deletion of your 
-                    data at any time. For any privacy-related inquiries, please contact our Data Protection Officer 
+                    data at any time. For any privacy-related enquiries, please contact our Data Protection Officer 
                     at <a href="mailto:privacy@precision-pay.co.uk" style={{ textDecoration: 'underline', color: 'inherit' }}>privacy@precision-pay.co.uk</a>.
                   </p>
                 </div>
